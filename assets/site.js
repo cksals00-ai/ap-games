@@ -4,3 +4,4 @@
   document.querySelectorAll('.hcard,.tcard,.tmini,.arenas li,.ngrid article,.skills li').forEach(function(el){el.classList.add('rv');io.observe(el)});
   var v=document.querySelector('.hero .bg');if(v){v.play&&v.play().catch(function(){})}
 })();
+;(function(){var n=document.querySelector('.top nav'),a=n&&n.querySelector('a.on');if(a&&n.scrollWidth>n.clientWidth)n.scrollLeft=a.offsetLeft-n.clientWidth/2+a.offsetWidth/2;})();

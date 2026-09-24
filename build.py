@@ -45,7 +45,7 @@ def shell(l,title,desc,path,body,og=None,extra_head=''):
 <main>{body}</main>
 <footer><div class="wrap"><div class="fgrid"><div><img src="/assets/ap_games_wordmark.svg" alt="AP Games" height="20"><p>{e(t['studio'])}</p></div>
 <div><a href="https://www.apholdings.kr/{l}/">{e(t['company'])} — apholdings.kr</a><br><a href="https://www.apholdings.kr/lastwave/">{e(t['privacy'])}</a></div></div><p class="fine">{e(t['footer_note'])}</p></div></footer>
-<script src="/assets/site.js?v=1" defer></script></body></html>'''
+<script src="/assets/site.js?v=2" defer></script></body></html>'''
 
 def out(path,text):
     p=os.path.join(OUT,path.lstrip('/')); os.makedirs(os.path.dirname(p),exist_ok=True); open(p,'w').write(text)
