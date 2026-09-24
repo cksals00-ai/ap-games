@@ -22,7 +22,7 @@ T={
    platform='iOS · App Store (coming)',studio='AP Games is the games label of A.P Holdings.',privacy='Privacy policy',company='Company',
    waves='Waves',boss='Boss',enemy='Enemy',footer_note='LAST WAVE © 2026 AP Games / A.P Holdings. All characters, art and lore are assets of AP Games.'),
 }
-ROLE_EN={'MAIN':'Main','MEDIC':'Medic','STARTER':'Starter','DRAGONS':'Dragons','BLADE':'Blade'}
+ROLE_EN={'MAIN':'Main','MEDIC':'Medic','STARTER':'Starter','DRAGONS':'Double Dragon','BLADE':'Blade'}
 
 def glyph(k):
     d={'wave':'M4 22c4-8 8-8 12 0s8 8 12 0','pulse':'M4 16h6l3-8 4 16 3-8h8','blink':'M16 4l4 8 8 4-8 4-4 8-4-8-8-4 8-4z','pillar':'M16 4v24M10 28h12M12 10l4-6 4 6',

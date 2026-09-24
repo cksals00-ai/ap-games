@@ -32,7 +32,7 @@ HEROES = [
   quote_ko="도망치는 것도 싸우는 거다. 오늘까지는.", quote_en="Running is fighting too. Until today.",
   skills=[("Q","DASH","전방 대시 · 잠시 무적","Forward dash · brief invulnerability","dash"),("E","POWER PUNCH","강력한 펀치 40","Heavy punch · 40","punch"),
           ("C","GUARD","2초간 받는 피해 50% 감소","−50% damage taken for 2s","guard"),("X","FULL POWER","10초 각성 · 공격 +50% · 속도 +30%","10s awakening · +50% attack · +30% speed","power")]),
- dict(id="alfred", name="ALFRED", ko="알프레드", role="DRAGONS", roleKo="쌍룡", hp=200, combo="18 · 18 · 35", art=True,
+ dict(id="alfred", name="ALFRED", ko="알프레드", role="DRAGONS", roleKo="더블 드래곤", hp=200, combo="18 · 18 · 35", art=True,
   tag_ko="양 어깨에 붙은 두 마리 네온 용과 함께 싸운다. 모든 기술은 용에서 나온다.", tag_en="Fights with two neon dragons on his shoulders. Every skill comes from them.",
   bio_ko=["푸른 용과 보라 용. 앞서 달리고, 포효하고, 몸을 감아 지키고, 적을 하늘로 끌고 가 내리꽂는다.", "후드의 「001」은 번호가 아니라 이름이다. 용은 무기가 아니라 동료다."],
   bio_en=["Blue and violet. They run ahead, roar, coil around him as a shield, and drag enemies into the sky to slam them down.", "The 001 on his hoodie is not a number, it is a name. The dragons are not weapons. They are company."],
