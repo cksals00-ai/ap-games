@@ -123,7 +123,7 @@ for l in ('ko','en'):
 
 out('/index.html','<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/ko/"><link rel="canonical" href="https://games.apholdings.kr/ko/"><script>location.replace((navigator.language||"").toLowerCase().startsWith("ko")?"/ko/":"/en/")</script></head><body></body></html>')
 out('/404.html','<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/ko/"></head><body></body></html>')
-out('/CNAME','games.apholdings.kr\n'); out('/.nojekyll','')
+out('/CNAME','games.apholdings.kr'); out('/.nojekyll','')
 urls=[f'/{l}/{s}' for l in ('ko','en') for s in ['','heroes/','threats/','arenas/','news/','board/']+[f'heroes/{h["id"]}/' for h in HEROES]]
 out('/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{ORIGIN}{u}</loc></url>' for u in urls)+'</urlset>')
 out('/robots.txt',f'User-agent: *\nAllow: /\nSitemap: {ORIGIN}/sitemap.xml\n')
