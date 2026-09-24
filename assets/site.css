@@ -67,3 +67,13 @@ footer{border-top:1px solid var(--line);padding:50px 0 40px;color:var(--muted);f
 .rv{transition:transform .5s}
 
 .top nav a,.lang,.eyebrow,.role,.stats span,.w,.plat,.tmini b,.pn a,.sh .more{font-weight:700}.btn,.skills b,.key{font-weight:800}.brand .game{font-weight:900}h1 small,h3 small{font-weight:700}
+/* v3: head no longer clipped · 3D FPS emphasis */
+.hcard .fig{padding-top:18px}.hcard .fig img{height:100%;width:100%;object-fit:contain;object-position:50% 100%;max-width:100%}
+.hcard:hover{transform:translateY(-4px)}
+.genre{display:flex;align-items:center;gap:8px;margin:0 0 18px}.genre b{font-weight:900;font-size:clamp(20px,2.4vw,30px);line-height:1;padding:8px 14px;border:2px solid var(--blue);border-radius:6px;color:#fff;background:#3d8bff33;letter-spacing:.02em}.genre b+b{background:var(--blue)}.genre span{margin-left:8px;font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--blue2);text-transform:uppercase}
+.feat{padding:90px 0 40px;background:radial-gradient(ellipse at 20% 0%,#12233f 0%,var(--bg) 60%)}
+.fgrid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.fgrid3 article{border:1px solid var(--line);border-radius:14px;padding:26px 24px;background:#0b1017cc}
+.fgrid3 .big{display:block;font-size:clamp(56px,6vw,88px);font-weight:900;line-height:1;background:linear-gradient(180deg,#fff,#7dd3ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fgrid3 h3{margin:14px 0 8px}.fgrid3 p{color:var(--muted);font-size:15px}
+@media(max-width:1000px){.fgrid3{grid-template-columns:1fr}}
+@media(max-width:640px){.hcard .fig{padding-top:12px}.feat{padding:56px 0 20px}.genre b{font-size:18px;padding:6px 10px}.genre span{flex-basis:100%;margin:6px 0 0}.genre{flex-wrap:wrap}}
