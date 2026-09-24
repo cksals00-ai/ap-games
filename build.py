@@ -79,7 +79,7 @@ for l in ('ko','en'):
 <section class="wide"><img src="/assets/art/hero_wide.jpg" alt="PIXEL — LAST WAVE key art" loading="lazy"></section>
 <section class="sec"><div class="wrap"><div class="sh"><h2>{e(t['roster'])}</h2><p>{e(t['rosterLead'])}</p><a class="more" href="/{l}/heroes/">{e(t['all'])} →</a></div><div class="hgrid">{heroes}</div></div></section>
 <section class="sec dark"><div class="wrap"><div class="sh"><h2>{e(t['threats'])}</h2><p>{e(t['threatsLead'])}</p><a class="more" href="/{l}/threats/">{e(t['all'])} →</a></div><div class="tstrip">{threats}</div></div><img class="band" src="/assets/art/threats_wide.jpg" alt="" loading="lazy"></section>
-<section class="sec" id="intro"><div class="wrap"><div class="sh"><h2>INTRO</h2><p>{'2026 · 57초' if l=='ko' else '2026 · 57 s'}</p></div><video class="intro" src="/assets/video/opening.mp4?v=2" poster="/assets/video/hero_poster.jpg?v=2" controls preload="none" playsinline></video></div></section>
+<section class="sec" id="intro"><div class="wrap"><div class="sh"><h2>INTRO</h2><p>{'2026 · 57초' if l=='ko' else '2026 · 57 s'}</p></div><video class="intro" src="/assets/video/opening.mp4?v=3" poster="/assets/video/hero_poster.jpg?v=2" controls preload="none" playsinline></video></div></section>
 <section class="sec"><div class="wrap"><div class="sh"><h2>{e(t['news'])}</h2><a class="more" href="/{l}/news/">{e(t['all'])} →</a></div><div class="ngrid">{news}</div></div></section>'''
     out(f'/{l}/index.html',shell(l,'LAST WAVE — 3D FPS | AP Games',t['heroLead'],f'/{l}/',body))
 
