@@ -118,7 +118,7 @@ for l in ('ko','en'):
     bt='게시판' if l=='ko' else 'Community'
     bl='공지·패치노트 · 자유 · 팬아트·공략 · 버그·건의' if l=='ko' else 'News & patch notes · General · Fan art & guides · Bugs & ideas'
     body=f'<section class="page board-page"><div class="wrap"><span class="eyebrow">LAST WAVE</span><h1>{e(bt)}</h1><p class="lead">{e(bl)}</p><div id="board" data-lang="{l}"><p class="b-msg">…</p></div></div></section>'
-    bh='<script src="/assets/board-config.js?v=1"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script><script src="/assets/board.js?v=1" defer></script>'
+    bh='<script src="/assets/board-config.js?v=2"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script><script src="/assets/board.js?v=2" defer></script>'
     out(f'/{l}/board/index.html',shell(l,f'{bt} — LAST WAVE',bl,f'/{l}/board/',body,extra_head=bh))
 
 out('/index.html','<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/ko/"><link rel="canonical" href="https://games.apholdings.kr/ko/"><script>location.replace((navigator.language||"").toLowerCase().startsWith("ko")?"/ko/":"/en/")</script></head><body></body></html>')

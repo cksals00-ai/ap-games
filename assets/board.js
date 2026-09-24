@@ -28,6 +28,7 @@
       rules: 'Abuse, harassment, spam, personal data or copyright violations are hidden without notice; repeat offenders are restricted.' }
   }[L];
   var CATS = ['notice', 'free', 'fanart', 'bug'], PAGE = 20;
+  var PROV = cfg.providers || ['google', 'apple'];
 
   function h(tag, attrs, kids) {
     var el = document.createElement(tag);
@@ -45,12 +46,15 @@
   function msg(t, cls) { return h('p', { class: 'b-msg ' + (cls || ''), text: t }); }
 
   if (!cfg.url || !cfg.anon || !window.supabase) { clear(); root.appendChild(msg(S.notReady)); return; }
-  var sb = window.supabase.createClient(cfg.url, cfg.anon, { auth: { persistSession: true, detectSessionInUrl: true, flowType: 'pkce' } });
+  var sb = window.supabase.createClient(cfg.url, cfg.anon, { db: { schema: 'board' }, auth: { persistSession: true, detectSessionInUrl: true, flowType: 'pkce' } });
   var me = null, prof = null;
 
   async function loadMe() {
     var r = await sb.auth.getUser(); me = r.data.user || null; prof = null;
-    if (me) { var p = await sb.from('profiles').select('*').eq('id', me.id).maybeSingle(); prof = p.data; }
+    if (me) {
+      var p = await sb.from('profiles').select('*').eq('id', me.id).maybeSingle(); prof = p.data;
+      if (!prof && !p.error) { await sb.from('profiles').insert({ id: me.id }); p = await sb.from('profiles').select('*').eq('id', me.id).maybeSingle(); prof = p.data; }
+    }
   }
   function login(provider) {
     sb.auth.signInWithOAuth({ provider: provider, options: { redirectTo: location.origin + location.pathname + location.search } });
@@ -70,8 +74,8 @@
     var box = h('div', { class: 'b-modal', onclick: function (e) { if (e.target === box) box.remove(); } }, [
       h('div', { class: 'b-card' }, [
         h('h3', { text: S.login }), msg(S.loginNeed),
-        h('button', { class: 'b-btn google', text: S.google, onclick: function () { login('google'); } }),
-        h('button', { class: 'b-btn apple', text: S.apple, onclick: function () { login('apple'); } }),
+        PROV.indexOf('google') >= 0 ? h('button', { class: 'b-btn google', text: S.google, onclick: function () { login('google'); } }) : null,
+        PROV.indexOf('apple') >= 0 ? h('button', { class: 'b-btn apple', text: S.apple, onclick: function () { login('apple'); } }) : null,
         h('button', { class: 'b-btn ghost', text: S.cancel, onclick: function () { box.remove(); } })
       ])
     ]);
@@ -100,7 +104,7 @@
     var actions = h('div', { class: 'b-actions' });
     if (cat !== 'notice' || (prof && prof.is_admin)) actions.appendChild(h('button', { class: 'b-btn', text: S.write, onclick: function () { if (needWrite()) go({ w: cat || 'free' }); } }));
     root.appendChild(actions);
-    var qy = sb.from('posts').select('id,category,title,images,status,pinned,hidden,comment_count,like_count,created_at,profiles(nickname,is_admin)')
+    var qy = sb.from('posts').select('id,category,title,images,status,pinned,hidden,comment_count,like_count,created_at,profiles!posts_author_fkey(nickname,is_admin)')
       .eq('game', 'lastwave').order('pinned', { ascending: false }).order('created_at', { ascending: false }).range(page * PAGE, page * PAGE + PAGE - 1);
     if (cat) qy = qy.eq('category', cat);
     var r = await qy;
@@ -129,7 +133,7 @@
 
   async function view(id) {
     clear(); root.appendChild(head(null));
-    var r = await sb.from('posts').select('*,profiles(nickname,is_admin)').eq('id', id).maybeSingle();
+    var r = await sb.from('posts').select('*,profiles!posts_author_fkey(nickname,is_admin)').eq('id', id).maybeSingle();
     if (!r.data) { root.appendChild(msg('404')); return; }
     var p = r.data, mine = me && p.author === me.id, admin = prof && prof.is_admin;
     var art = h('article', { class: 'b-post' }, [
@@ -166,7 +170,7 @@
     art.appendChild(tools);
     root.appendChild(art);
     // comments
-    var cs = await sb.from('comments').select('*,profiles(nickname,is_admin)').eq('post_id', id).order('created_at');
+    var cs = await sb.from('comments').select('*,profiles!comments_author_fkey(nickname,is_admin)').eq('post_id', id).order('created_at');
     var box = h('section', { class: 'b-comments' }, [h('h3', { text: S.comment + ' ' + ((cs.data || []).length) })]);
     (cs.data || []).forEach(function (c) {
       var cm = me && c.author === me.id;
@@ -204,8 +208,8 @@
       for (var i = 0; i < files.length; i++) {
         var f = files[i]; if (f.size > 5242880) continue;
         var path = me.id + '/' + Date.now() + '_' + i + '.' + (f.name.split('.').pop() || 'png').toLowerCase().replace(/[^a-z0-9]/g, '');
-        var up = await sb.storage.from('board').upload(path, f, { contentType: f.type, upsert: false });
-        if (!up.error) imgs.push(sb.storage.from('board').getPublicUrl(path).data.publicUrl);
+        var up = await sb.storage.from('apgames-board').upload(path, f, { contentType: f.type, upsert: false });
+        if (!up.error) imgs.push(sb.storage.from('apgames-board').getPublicUrl(path).data.publicUrl);
       }
       var row = { title: ti.value.trim(), body: bd.value.trim(), images: imgs };
       var res = p ? await sb.from('posts').update(row).eq('id', p.id).select('id').single()
