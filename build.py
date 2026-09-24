@@ -39,8 +39,8 @@ def shell(l,title,desc,path,body,og=None,extra_head=''):
     return f'''<!doctype html><html lang="{l}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(title)}</title>
 <meta name="description" content="{e(desc,True)}"><link rel="canonical" href="{ORIGIN}{path}"><link rel="alternate" hreflang="{t['other']}" href="{ORIGIN}{alt}">
 <meta property="og:title" content="{e(title,True)}"><meta property="og:description" content="{e(desc,True)}"><meta property="og:image" content="{ORIGIN}{og}"><meta property="og:url" content="{ORIGIN}{path}"><meta name="theme-color" content="#06080d">
-<link rel="icon" href="/assets/ap_games_mark.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=1">{extra_head}</head><body>
+<link rel="icon" href="/assets/ap_games_mark.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">{extra_head}</head><body>
 <header class="top"><a class="brand" href="/{l}/"><img src="/assets/ap_games_wordmark.svg" alt="AP Games" height="22"><span class="game">LAST WAVE</span></a><nav>{nav}</nav><a class="lang" href="{alt}">{t['otherLabel']}</a></header>
 <main>{body}</main>
 <footer><div class="wrap"><div class="fgrid"><div><img src="/assets/ap_games_wordmark.svg" alt="AP Games" height="20"><p>{e(t['studio'])}</p></div>
