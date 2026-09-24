@@ -72,14 +72,14 @@ for l in ('ko','en'):
     threats=''.join(f'<a class="tmini" href="/{l}/threats/#{x["id"]}"><img src="/assets/art/{x["id"]}_full_s.webp" alt="{e(x["name"])}" loading="lazy"><b>{e(x["name"])}</b></a>' for x in THREATS+BOSSES)
     news=''.join(f'<article><time>{n[0]}</time><h3>{e(n[1] if l=="ko" else n[3])}</h3><p>{e(n[2] if l=="ko" else n[4])}</p></article>' for n in NEWS)
     feats=''.join(f'<article><b class="big">{a}</b><h3>{e(h_)}</h3><p>{e(d_)}</p></article>' for a,h_,d_ in t['feat'])
-    body=f'''<section class="hero"><video class="bg" src="/assets/video/hero_loop.mp4" poster="/assets/video/hero_poster.jpg" autoplay muted loop playsinline></video><div class="shade"></div>
+    body=f'''<section class="hero"><video class="bg" src="/assets/video/hero_loop.mp4?v=2" poster="/assets/video/hero_poster.jpg?v=2" autoplay muted loop playsinline></video><div class="shade"></div>
 <div class="wrap hero-copy"><span class="eyebrow">AP GAMES PRESENTS</span><div class="genre"><b>3D</b><b>FPS</b><span>{e(t["genre"])}</span></div><h1>{e(t['heroTitle'][0])}<br>{e(t['heroTitle'][1])}</h1><p class="lead">{e(t['heroLead'])}</p>
 <div class="actions"><a class="btn" href="/{l}/heroes/">{e(t['cta'])}</a><a class="btn ghost" href="#intro">{e(t['cta2'])}</a></div><p class="plat">{e(t['platform'])}</p></div></section>
 <section class="feat"><div class="wrap"><div class="sh"><h2>{e(t['featTitle'])}</h2><p>{e(t['featLead'])}</p></div><div class="fgrid3">{feats}</div></div></section>
 <section class="wide"><img src="/assets/art/hero_wide.jpg" alt="PIXEL — LAST WAVE key art" loading="lazy"></section>
 <section class="sec"><div class="wrap"><div class="sh"><h2>{e(t['roster'])}</h2><p>{e(t['rosterLead'])}</p><a class="more" href="/{l}/heroes/">{e(t['all'])} →</a></div><div class="hgrid">{heroes}</div></div></section>
 <section class="sec dark"><div class="wrap"><div class="sh"><h2>{e(t['threats'])}</h2><p>{e(t['threatsLead'])}</p><a class="more" href="/{l}/threats/">{e(t['all'])} →</a></div><div class="tstrip">{threats}</div></div><img class="band" src="/assets/art/threats_wide.jpg" alt="" loading="lazy"></section>
-<section class="sec" id="intro"><div class="wrap"><div class="sh"><h2>INTRO</h2><p>{'2026 · 28초' if l=='ko' else '2026 · 28 s'}</p></div><video class="intro" src="/assets/video/opening.mp4" poster="/assets/video/hero_poster.jpg" controls preload="none" playsinline></video></div></section>
+<section class="sec" id="intro"><div class="wrap"><div class="sh"><h2>INTRO</h2><p>{'2026 · 57초' if l=='ko' else '2026 · 57 s'}</p></div><video class="intro" src="/assets/video/opening.mp4?v=2" poster="/assets/video/hero_poster.jpg?v=2" controls preload="none" playsinline></video></div></section>
 <section class="sec"><div class="wrap"><div class="sh"><h2>{e(t['news'])}</h2><a class="more" href="/{l}/news/">{e(t['all'])} →</a></div><div class="ngrid">{news}</div></div></section>'''
     out(f'/{l}/index.html',shell(l,'LAST WAVE — 3D FPS | AP Games',t['heroLead'],f'/{l}/',body))
 
