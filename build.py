@@ -5,7 +5,7 @@ from content import HEROES, THREATS, BOSSES, ARENAS, NEWS
 OUT='.'; ORIGIN='https://games.apholdings.kr'
 e=html.escape
 T={
- 'ko':dict(lang='ko',other='en',otherLabel='EN',nav=[('/ko/','홈'),('/ko/heroes/','영웅'),('/ko/threats/','위협'),('/ko/arenas/','아레나'),('/ko/news/','소식')],
+ 'ko':dict(lang='ko',other='en',otherLabel='EN',nav=[('/ko/','홈'),('/ko/heroes/','영웅'),('/ko/threats/','위협'),('/ko/arenas/','아레나'),('/ko/news/','소식'),('/ko/board/','게시판')],
    heroTitle=('무너진 서울.','마지막 파도.'),heroLead='리얼 3D 1인칭 슈터(FPS). 무너진 서울 한복판에서 끝없이 밀려오는 파도를 버텨라. 영웅 다섯, 위협 아홉, 열한 구역.',
    genre='웨이브 서바이벌 · iOS',feat=[('3D','리얼 3D','반실사 캐릭터와 무너진 서울을 Unity 실시간 3D로. 비 젖은 아스팔트에 네온이 번진다.'),('FPS','1인칭 슈팅','100 스테이지, 눈앞까지 달려드는 적. 조준하고, 쏘고, 버틴다. 3인칭 아레나 모드도 함께.'),('50','50 웨이브','웨이브마다 강해지는 적 7종과 보스 2. 매 판 다른 강화 카드로 빌드를 짠다.')],featTitle='3D FPS',featLead='손 안에서 도는 리얼 3D 1인칭 슈터.',cta='영웅 보기',cta2='인트로 보기',roster='영웅',rosterLead='다섯 명. 각자 다른 이유로 서 있다.',threats='위협',threatsLead='한 마리가 더 무섭게. 적 7, 보스 2.',
    arenas='아레나',arenasLead='무너진 서울 열한 구역 · 웨이브 50.',news='소식',all='전체 보기',role='역할',hpL='HP',combo='콤보',skills='기술',
@@ -13,7 +13,7 @@ T={
    soon='아트 준비 중 — 원본 디자인 기준으로 제작 중입니다.',turn='3D 턴테이블 · 드래그해서 돌려 보세요',turnNote='PIXEL 3D 모델 실험판(v1). 최종 인게임 모델이 아닙니다.',
    platform='iOS · App Store (준비 중)',studio='AP Games는 A.P Holdings의 게임 레이블입니다.',privacy='개인정보처리방침',company='회사',
    waves='웨이브',boss='보스',enemy='적',footer_note='LAST WAVE © 2026 AP Games / A.P Holdings. 모든 캐릭터·아트·설정은 AP Games의 자산입니다.'),
- 'en':dict(lang='en',other='ko',otherLabel='KO',nav=[('/en/','Home'),('/en/heroes/','Heroes'),('/en/threats/','Threats'),('/en/arenas/','Arenas'),('/en/news/','News')],
+ 'en':dict(lang='en',other='ko',otherLabel='KO',nav=[('/en/','Home'),('/en/heroes/','Heroes'),('/en/threats/','Threats'),('/en/arenas/','Arenas'),('/en/news/','News'),('/en/board/','Community')],
    heroTitle=('A fallen Seoul.','The last wave.'),heroLead='A real-3D first-person shooter. Hold the line in the ruins of Seoul as the waves keep coming. Five heroes, nine threats, eleven districts.',
    genre='Wave survival · iOS',feat=[('3D','Real 3D','Semi-realistic heroes and a broken Seoul, rendered live in Unity. Neon bleeding across wet asphalt.'),('FPS','First-person','100 stages, enemies rushing right into your face. Aim, fire, hold. A third-person arena mode too.'),('50','50 waves','Seven enemy types and two bosses that grow with every wave. New upgrade cards each run.')],featTitle='3D FPS',featLead='A real-3D first-person shooter in your hand.',cta='Meet the heroes',cta2='Watch the intro',roster='Heroes',rosterLead='Five of them. Each standing for a different reason.',threats='Threats',threatsLead='Fewer, but each one worse. 7 enemies, 2 bosses.',
    arenas='Arenas',arenasLead='Eleven districts of a fallen Seoul · 50 waves.',news='News',all='See all',role='Role',hpL='HP',combo='Combo',skills='Skills',
@@ -40,7 +40,7 @@ def shell(l,title,desc,path,body,og=None,extra_head=''):
 <meta name="description" content="{e(desc,True)}"><link rel="canonical" href="{ORIGIN}{path}"><link rel="alternate" hreflang="{t['other']}" href="{ORIGIN}{alt}">
 <meta property="og:title" content="{e(title,True)}"><meta property="og:description" content="{e(desc,True)}"><meta property="og:image" content="{ORIGIN}{og}"><meta property="og:url" content="{ORIGIN}{path}"><meta name="theme-color" content="#06080d">
 <link rel="icon" href="/assets/ap_games_mark.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=3">{extra_head}</head><body>
+<link rel="stylesheet" href="/assets/site.css?v=4">{extra_head}</head><body>
 <header class="top"><a class="brand" href="/{l}/"><img src="/assets/ap_games_wordmark.svg" alt="AP Games" height="22"><span class="game">LAST WAVE</span></a><nav>{nav}</nav><a class="lang" href="{alt}">{t['otherLabel']}</a></header>
 <main>{body}</main>
 <footer><div class="wrap"><div class="fgrid"><div><img src="/assets/ap_games_wordmark.svg" alt="AP Games" height="20"><p>{e(t['studio'])}</p></div>
@@ -114,10 +114,17 @@ for l in ('ko','en'):
     body=f'<section class="page"><div class="wrap"><span class="eyebrow">LAST WAVE</span><h1>{e(t["news"])}</h1><div class="ngrid list">{items}</div></div></section>'
     out(f'/{l}/news/index.html',shell(l,f'{t["news"]} — LAST WAVE','Dev notes',f'/{l}/news/',body))
 
+    # BOARD (Supabase · 구글·애플 로그인). 설정은 /assets/board-config.js — 비어 있으면 「오픈 준비 중」
+    bt='게시판' if l=='ko' else 'Community'
+    bl='공지·패치노트 · 자유 · 팬아트·공략 · 버그·건의' if l=='ko' else 'News & patch notes · General · Fan art & guides · Bugs & ideas'
+    body=f'<section class="page board-page"><div class="wrap"><span class="eyebrow">LAST WAVE</span><h1>{e(bt)}</h1><p class="lead">{e(bl)}</p><div id="board" data-lang="{l}"><p class="b-msg">…</p></div></div></section>'
+    bh='<script src="/assets/board-config.js?v=1"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script><script src="/assets/board.js?v=1" defer></script>'
+    out(f'/{l}/board/index.html',shell(l,f'{bt} — LAST WAVE',bl,f'/{l}/board/',body,extra_head=bh))
+
 out('/index.html','<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/ko/"><link rel="canonical" href="https://games.apholdings.kr/ko/"><script>location.replace((navigator.language||"").toLowerCase().startsWith("ko")?"/ko/":"/en/")</script></head><body></body></html>')
 out('/404.html','<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/ko/"></head><body></body></html>')
 out('/CNAME','games.apholdings.kr\n'); out('/.nojekyll','')
-urls=[f'/{l}/{s}' for l in ('ko','en') for s in ['','heroes/','threats/','arenas/','news/']+[f'heroes/{h["id"]}/' for h in HEROES]]
+urls=[f'/{l}/{s}' for l in ('ko','en') for s in ['','heroes/','threats/','arenas/','news/','board/']+[f'heroes/{h["id"]}/' for h in HEROES]]
 out('/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{ORIGIN}{u}</loc></url>' for u in urls)+'</urlset>')
 out('/robots.txt',f'User-agent: *\nAllow: /\nSitemap: {ORIGIN}/sitemap.xml\n')
 print('built',len(urls),'pages')

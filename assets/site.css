@@ -77,3 +77,29 @@ footer{border-top:1px solid var(--line);padding:50px 0 40px;color:var(--muted);f
 .fgrid3 h3{margin:14px 0 8px}.fgrid3 p{color:var(--muted);font-size:15px}
 @media(max-width:1000px){.fgrid3{grid-template-columns:1fr}}
 @media(max-width:640px){.hcard .fig{padding-top:12px}.feat{padding:56px 0 20px}.genre b{font-size:18px;padding:6px 10px}.genre span{flex-basis:100%;margin:6px 0 0}.genre{flex-wrap:wrap}}
+/* v4: 게시판 */
+#board{margin-top:34px;font-size:15px}
+.b-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.b-tabs{display:flex;gap:6px;flex-wrap:wrap}.b-tabs a{padding:8px 14px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:14px}.b-tabs a.on,.b-tabs a:hover{color:#fff;border-color:var(--blue);background:#3d8bff22}
+.b-auth{display:flex;align-items:center;gap:10px}.b-me{font-weight:700}
+.b-btn{font:inherit;font-weight:700;font-size:14px;padding:10px 18px;border-radius:8px;border:1px solid var(--blue);background:var(--blue);color:#fff;cursor:pointer}.b-btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}.b-btn:hover{filter:brightness(1.15)}
+.b-btn.google{background:#fff;color:#1f1f1f;border-color:#fff}.b-btn.apple{background:#000;color:#fff;border-color:#444}
+.b-actions{display:flex;gap:10px;justify-content:flex-end;margin:16px 0}
+.b-list{list-style:none;padding:0;margin:0}.b-list li{border-bottom:1px solid var(--line)}.b-list li a{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:16px 4px;color:var(--ink)}.b-list li a:hover{background:#ffffff08}
+.b-list li img{grid-row:span 2;width:84px;height:60px;object-fit:cover;border-radius:6px}.b-list li a>div{grid-column:2}.b-list li a:not(:has(img))>div{grid-column:1/-1}
+.b-list li.pinned{background:#3d8bff12}.b-list li.hidden{opacity:.45}
+.b-list.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:8px}.b-list.grid li{border:1px solid var(--line);border-radius:12px;overflow:hidden}.b-list.grid li a{display:block;padding:0 0 12px}.b-list.grid li img{width:100%;height:170px;border-radius:0;margin-bottom:10px}.b-list.grid .b-row,.b-list.grid .b-meta{padding:0 12px}
+.b-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.b-cat{font-size:12px;color:var(--blue2);font-weight:700}.b-title{font-weight:700}.b-cc{color:var(--blue2);font-size:13px}
+.b-meta{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px}
+.b-tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;border:1px solid var(--line)}.b-tag.admin{border-color:var(--blue);color:var(--blue2)}.st-open{color:#ffd166}.st-checking{color:var(--blue2)}.st-fixed{color:#5ee6a0}.st-wontfix{color:var(--muted)}
+.b-msg{color:var(--muted);margin:18px 0}.b-msg.err{color:var(--red)}.b-msg.rules{font-size:12px;margin-top:28px}
+.b-post{margin-top:24px}.b-back{font-size:13px;color:var(--muted)}.b-h{font-size:clamp(24px,3vw,34px);margin:12px 0 6px}.b-body{white-space:pre-wrap;line-height:1.75;margin:24px 0}.b-img{max-width:100%;border-radius:10px;margin:8px 0;display:block}
+.b-tools{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px}
+.b-comments{margin-top:36px}.b-c{border-bottom:1px solid var(--line);padding:12px 0}.b-c p{margin:6px 0;white-space:pre-wrap}.b-c.hidden{opacity:.45}
+.b-link{background:none;border:0;color:var(--muted);font:inherit;font-size:12px;cursor:pointer;padding:0 8px 0 0}
+.b-form{display:grid;gap:12px;margin-top:20px;max-width:820px}.b-form.narrow{max-width:420px}.b-cform{display:grid;gap:10px;margin-top:16px}
+.b-in,.b-sel{font:inherit;color:var(--ink);background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:12px 14px;width:100%;box-sizing:border-box}.b-in:focus,.b-sel:focus{outline:2px solid var(--blue);border-color:transparent}.b-sel{width:auto}
+.b-file{display:grid;gap:6px;font-size:13px;color:var(--muted)}
+.b-modal{position:fixed;inset:0;background:#000b;display:grid;place-items:center;z-index:50;padding:16px}.b-card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:28px;width:min(380px,100%);display:grid;gap:10px}.b-card h3{margin:0}
+.b-btn.more{display:block;margin:18px auto}
+@media(max-width:640px){.b-top{flex-direction:column;align-items:stretch}.b-auth{justify-content:flex-end}.b-list li img{width:64px;height:48px}}
