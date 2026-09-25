@@ -26,13 +26,6 @@ HEROES = [
   quote_ko="내가 서 있는 한, 아무도 안 죽어.", quote_en="As long as I'm standing, nobody dies.",
   skills=[("Q","HEAL LINK","회복 링크 · 초당 +15 (8초)","Heal link · +15/s for 8s","link"),("E","HEAL BURST","즉시 +100 회복","Instant +100","burst"),
           ("C","LIFE SHIELD","100 흡수 보호막 · 깨지면 +50 회복","100 shield · +50 heal on break","shield"),("X","ALL HEAL","완전 회복 +200 · 무적 1초","Full heal +200 · 1s invulnerable","all")]),
- dict(id="rookie", name="ROOKIE", ko="루키", role="STARTER", roleKo="시작", hp=200, combo="15 · 15 · 20", art=True,
-  tag_ko="WAVE가 시작된 그날, 평범한 생존자였던 그는 살아남기 위해 싸우기 시작했다.", tag_en="On the day the WAVE began, an ordinary survivor started fighting to stay alive.",
-  bio_ko=["기술이 아니라 몸으로 싸운다. 대시, 펀치, 가드 — 그리고 10초의 각성.", "모든 플레이어가 처음 만나는 얼굴. 강남에서 친구들을 잃고, 지하철 입구에서 처음 워커를 쓰러뜨렸다."],
-  bio_en=["He fights with his body, not with tricks. Dash, punch, guard — and ten seconds of awakening.", "The first face every player meets. Lost his friends in Gangnam, dropped his first walker at the station entrance."],
-  quote_ko="도망치는 것도 싸우는 거다. 오늘까지는.", quote_en="Running is fighting too. Until today.",
-  skills=[("Q","DASH","전방 대시 · 잠시 무적","Forward dash · brief invulnerability","dash"),("E","POWER PUNCH","강력한 펀치 40","Heavy punch · 40","punch"),
-          ("C","GUARD","2초간 받는 피해 50% 감소","−50% damage taken for 2s","guard"),("X","FULL POWER","10초 각성 · 공격 +50% · 속도 +30%","10s awakening · +50% attack · +30% speed","power")]),
  dict(id="alfred", name="ALFRED", ko="알프레드", role="DRAGONS", roleKo="더블 드래곤", hp=200, combo="18 · 18 · 35", art=True,
   tag_ko="양 어깨에 붙은 두 마리 네온 용과 함께 싸운다. 모든 기술은 용에서 나온다.", tag_en="Fights with two neon dragons on his shoulders. Every skill comes from them.",
   bio_ko=["푸른 용과 보라 용. 앞서 달리고, 포효하고, 몸을 감아 지키고, 적을 하늘로 끌고 가 내리꽂는다.", "후드의 「001」은 번호가 아니라 이름이다. 용은 무기가 아니라 동료다."],
@@ -60,6 +53,17 @@ HEROES = [
           ("E","BLINK","짧은 순간이동 · 잠시 무적","Short-range blink · brief invulnerability","blink"),
           ("C","SAFE ZONE","포털 방벽 · 아군 받는 피해 30% 감소 4초","Portal barrier · −30% damage to allies for 4s","shield"),
           ("X","NEW DIMENSION","거대한 차원문 · 적을 삼켰다 무작위로 떨어뜨림 60","A vast rift gate · swallows enemies and drops them at random · 60","burst")]),
+]
+
+# 원화(팀 아트) 기준 영웅은 다섯 — ROOKIE 는 사이트에서 뺌 (2026-09-25 대표 확정). 되돌리려면 HEROES 로 옮긴다.
+RETIRED = [
+ dict(id="rookie", name="ROOKIE", ko="루키", role="STARTER", roleKo="시작", hp=200, combo="15 · 15 · 20", art=True,
+  tag_ko="WAVE가 시작된 그날, 평범한 생존자였던 그는 살아남기 위해 싸우기 시작했다.", tag_en="On the day the WAVE began, an ordinary survivor started fighting to stay alive.",
+  bio_ko=["기술이 아니라 몸으로 싸운다. 대시, 펀치, 가드 — 그리고 10초의 각성.", "모든 플레이어가 처음 만나는 얼굴. 강남에서 친구들을 잃고, 지하철 입구에서 처음 워커를 쓰러뜨렸다."],
+  bio_en=["He fights with his body, not with tricks. Dash, punch, guard — and ten seconds of awakening.", "The first face every player meets. Lost his friends in Gangnam, dropped his first walker at the station entrance."],
+  quote_ko="도망치는 것도 싸우는 거다. 오늘까지는.", quote_en="Running is fighting too. Until today.",
+  skills=[("Q","DASH","전방 대시 · 잠시 무적","Forward dash · brief invulnerability","dash"),("E","POWER PUNCH","강력한 펀치 40","Heavy punch · 40","punch"),
+          ("C","GUARD","2초간 받는 피해 50% 감소","−50% damage taken for 2s","guard"),("X","FULL POWER","10초 각성 · 공격 +50% · 속도 +30%","10s awakening · +50% attack · +30% speed","power")]),
 ]
 
 THREATS = [
@@ -127,8 +131,8 @@ ARENAS = [
 ]
 
 NEWS = [
- ("2026-09-25","새 영웅 IRIS","포털을 여는 여섯 번째 영웅 아이리스가 합류했다. 「경계는, 내가 정해.」",
-  "New hero: IRIS","IRIS, the portal-opener, joins as the sixth hero. “I decide where the border is.”"),
+ ("2026-09-25","새 영웅 IRIS · 다섯 영웅 확정","포털을 여는 아이리스가 합류했다. 팀 원화 그대로 PIXEL · LINE · BLUE NEWBIE · ALFRED · IRIS, 영웅은 다섯. 「경계는, 내가 정해.」",
+  "New hero: IRIS · the five","IRIS, the portal-opener, joins. Straight from the team art: PIXEL, LINE, BLUE NEWBIE, ALFRED and IRIS — five heroes. “I decide where the border is.”"),
  ("2026-09-24","영웅 5명 전원 · 새 보스 3종","BLUE NEWBIE · ROOKIE · LINE의 키아트가 나오며 영웅 다섯 명이 모두 모였다. 심연의 왕(웨이브 30), 공허의 심장(웨이브 50), 최종 보스 절망의 창조자(웨이브 100)를 공개한다.",
   "All five heroes · three new bosses","Key art for BLUE NEWBIE, ROOKIE and LINE completes the roster of five. Revealing The Abyss King (wave 30), Heart of the Void (wave 50) and the final boss, Creator of Despair (wave 100)."),
  ("2026-09-24","캐릭터 아트 1차 공개","PIXEL · ALFRED와 적 7종, 보스 2종의 키아트가 나왔다. BLUE NEWBIE · ROOKIE · LINE은 원본 디자인 기준으로 제작 중.",
