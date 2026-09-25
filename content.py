@@ -48,6 +48,17 @@ HEROES = [
   quote_ko="선을 넘었으면, 잘린다.", quote_en="Cross the line, and you're cut.",
   skills=[("Q","GIANT BLADE","검이 거대해진다 · 공격 +60% · 주변 10","The blade grows · +60% attack · 10 around","blade"),("E","BLADE SUMMON","바닥에서 검 소환 · 적마다 40","Blades from the ground · 40 each","summon"),
           ("C","MAGNET BLADE","적들을 검 쪽으로 끌어당김 20","Pulls enemies to the blade · 20","magnet"),("X","15 BLADES","검 15자루 연속 투척 70×15","Fifteen blades thrown · 70×15","multi")]),
+ dict(id="iris", name="IRIS", ko="아이리스", role="PORTAL", roleKo="포털", hp=200, combo="15 · 20 · 25", art=True,
+  tag_ko="경계를 여는 사람. 포털로 길을 만들고, 누구도 그다음 수를 읽지 못한다.", tag_en="She opens the borders. Portals make the path, and nobody reads her next move.",
+  bio_ko=["헤드폰을 목에 건 채 균열 한가운데를 걷는다. 그녀에게 벽은 벽이 아니라 아직 열지 않은 문이다.",
+          "포털로 동료를 옮기고, 적을 엉뚱한 곳으로 떨어뜨린다. 예측할 수 없다는 것이 그녀의 가장 큰 무기다."],
+  bio_en=["She walks through the middle of the rift, headphones around her neck. To her a wall is not a wall — just a door not yet opened.",
+          "She moves allies through portals and drops enemies somewhere they never meant to be. Being unpredictable is her sharpest weapon."],
+  quote_ko="경계는, 내가 정해.", quote_en="I decide where the border is.",
+  skills=[("Q","PORTAL","두 지점을 잇는 포털 · 아군 이동","A portal linking two points · moves allies","link"),
+          ("E","BLINK","짧은 순간이동 · 잠시 무적","Short-range blink · brief invulnerability","blink"),
+          ("C","SAFE ZONE","포털 방벽 · 아군 받는 피해 30% 감소 4초","Portal barrier · −30% damage to allies for 4s","shield"),
+          ("X","NEW DIMENSION","거대한 차원문 · 적을 삼켰다 무작위로 떨어뜨림 60","A vast rift gate · swallows enemies and drops them at random · 60","burst")]),
 ]
 
 THREATS = [
@@ -115,6 +126,8 @@ ARENAS = [
 ]
 
 NEWS = [
+ ("2026-09-25","새 영웅 IRIS","포털을 여는 여섯 번째 영웅 아이리스가 합류했다. 「경계는, 내가 정해.」",
+  "New hero: IRIS","IRIS, the portal-opener, joins as the sixth hero. “I decide where the border is.”"),
  ("2026-09-24","영웅 5명 전원 · 새 보스 3종","BLUE NEWBIE · ROOKIE · LINE의 키아트가 나오며 영웅 다섯 명이 모두 모였다. 심연의 왕(웨이브 30), 공허의 심장(웨이브 50), 최종 보스 절망의 창조자(웨이브 100)를 공개한다.",
   "All five heroes · three new bosses","Key art for BLUE NEWBIE, ROOKIE and LINE completes the roster of five. Revealing The Abyss King (wave 30), Heart of the Void (wave 50) and the final boss, Creator of Despair (wave 100)."),
  ("2026-09-24","캐릭터 아트 1차 공개","PIXEL · ALFRED와 적 7종, 보스 2종의 키아트가 나왔다. BLUE NEWBIE · ROOKIE · LINE은 원본 디자인 기준으로 제작 중.",
