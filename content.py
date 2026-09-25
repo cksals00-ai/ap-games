@@ -12,6 +12,7 @@ HEROES = [
           "Records from the lab beneath Seoul Station carry one name: PROJECT: PIXEL. Was he made — or is he the place where the rift first opened?",
           "He does not speak. His last skill, BLUE PILLAR, drives straight into the heart of the wave."],
   quote_ko="가면은 얼굴이 아니라 약속이다.", quote_en="The mask is not a face. It is a promise.",
+  unmasked=("pixel_unmasked.jpg","가면 아래","UNDER THE MASK","가면을 벗은 PIXEL. 손끝의 푸른 불꽃은 파도와 같은 것으로 만들어졌다. 위험이 오면 가면은 픽셀처럼 다시 조립된다.","PIXEL without the mask. The blue flame at his fingertips is made of the same thing as the wave. When danger comes, the mask reassembles itself, pixel by pixel."),
   skills=[("Q","TSUNAMI","거대한 푸른 파도 100 + 넉백","A vast blue wave · 100 + knockback","wave"),
           ("E","TEAM HEAL","푸른 파동 회복 +80","Blue pulse · heal +80","pulse"),
           ("C","TELEPORT","푸른 픽셀로 흩어져 순간이동 · 무적","Scatter into pixels · blink · invulnerable","blink"),

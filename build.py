@@ -39,9 +39,9 @@ def shell(l,title,desc,path,body,og=None,extra_head=''):
     return f'''<!doctype html><html lang="{l}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(title)}</title>
 <meta name="description" content="{e(desc,True)}"><link rel="canonical" href="{ORIGIN}{path}"><link rel="alternate" hreflang="{t['other']}" href="{ORIGIN}{alt}">
 <meta property="og:title" content="{e(title,True)}"><meta property="og:description" content="{e(desc,True)}"><meta property="og:image" content="{ORIGIN}{og}"><meta property="og:url" content="{ORIGIN}{path}"><meta name="theme-color" content="#06080d">
-<link rel="icon" href="/assets/ap_games_mark.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=6">{extra_head}</head><body>
-<header class="top"><a class="brand" href="/{l}/"><img src="/assets/ap_games_wordmark.svg" alt="AP Games" height="22"><span class="game">LAST WAVE</span></a><nav>{nav}</nav><a class="lang" href="{alt}">{t['otherLabel']}</a></header>
+<link rel="icon" href="/assets/ap_games_mark.svg"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=7">{extra_head}</head><body>
+<header class="top"><a class="brand" href="/{l}/"><img src="/assets/ap_games_wordmark.svg" alt="AP Games" height="22"><img class="gicon" src="/assets/lastwave_icon64.png" width="22" height="22" alt=""><span class="game">LAST WAVE</span></a><nav>{nav}</nav><a class="lang" href="{alt}">{t['otherLabel']}</a></header>
 <main>{body}</main>
 <footer><div class="wrap"><div class="fgrid"><div><img src="/assets/ap_games_wordmark.svg" alt="AP Games" height="20"><p>{e(t['studio'])}</p></div>
 <div><a href="https://www.apholdings.kr/{l}/">{e(t['company'])} — apholdings.kr</a><br><a href="https://www.apholdings.kr/lastwave/">{e(t['privacy'])}</a></div></div><p class="fine">{e(t['footer_note'])}</p></div></footer>
@@ -73,7 +73,7 @@ for l in ('ko','en'):
     news=''.join(f'<article><time>{n[0]}</time><h3>{e(n[1] if l=="ko" else n[3])}</h3><p>{e(n[2] if l=="ko" else n[4])}</p></article>' for n in NEWS)
     feats=''.join(f'<article><b class="big">{a}</b><h3>{e(h_)}</h3><p>{e(d_)}</p></article>' for a,h_,d_ in t['feat'])
     body=f'''<section class="hero"><video class="bg" src="/assets/video/hero_loop.mp4?v=2" poster="/assets/video/hero_poster.jpg?v=2" autoplay muted loop playsinline></video><div class="shade"></div>
-<div class="wrap hero-copy"><span class="eyebrow">AP GAMES PRESENTS</span><div class="genre"><b>3D</b><b>FPS</b><span>{e(t["genre"])}</span></div><h1>{e(t['heroTitle'][0])}<br>{e(t['heroTitle'][1])}</h1><p class="lead">{e(t['heroLead'])}</p>
+<div class="wrap hero-copy"><img class="game-logo" src="/assets/lastwave_logo.png" alt="LAST WAVE" width="132" height="132"><span class="eyebrow">AP GAMES PRESENTS</span><div class="genre"><b>3D</b><b>FPS</b><span>{e(t["genre"])}</span></div><h1>{e(t['heroTitle'][0])}<br>{e(t['heroTitle'][1])}</h1><p class="lead">{e(t['heroLead'])}</p>
 <div class="actions"><a class="btn" href="/{l}/heroes/">{e(t['cta'])}</a><a class="btn ghost" href="#intro">{e(t['cta2'])}</a></div><p class="plat">{e(t['platform'])}</p></div></section>
 <section class="feat"><div class="wrap"><div class="sh"><h2>{e(t['featTitle'])}</h2><p>{e(t['featLead'])}</p></div><div class="fgrid3">{feats}</div></div></section>
 <section class="wide"><img src="/assets/art/hero_wide.jpg" alt="PIXEL — LAST WAVE key art" loading="lazy"></section>
@@ -89,6 +89,8 @@ for l in ('ko','en'):
 
     # HERO pages
     for i,h in enumerate(HEROES):
+        um=h.get('unmasked')
+        unm=(f'<section class="sec unmasked"><div class="wrap"><div class="um"><img src="/assets/art/{um[0]}" alt="{e(h["name"])} — {e(um[1] if l=="ko" else um[2])}" loading="lazy"><div><span class="eyebrow">{e(um[1] if l=="ko" else um[2])}</span><p>{e(um[3] if l=="ko" else um[4])}</p></div></div></div></section>') if um else ''
         role=h['roleKo'] if l=='ko' else ROLE_EN[h['role']]
         bio=''.join(f'<p>{e(x)}</p>' for x in (h['bio_ko'] if l=='ko' else h['bio_en']))
         skills=''.join(f'<li><i class="key">{k}</i><span class="g">{glyph(g)}</span><div><b>{e(n)}</b><p>{e(dk if l=="ko" else de)}</p></div></li>' for k,n,dk,de,g in h['skills'])
@@ -101,7 +103,7 @@ for l in ('ko','en'):
         body=f'''<section class="hpage"><div class="art">{key}</div><div class="wrap copy"><span class="eyebrow">{e(t['role'])} · {e(role)}</span><h1>{e(h['name'])}<small>{e(h['ko'])}</small></h1><p class="tag">{e(h['tag_ko'] if l=='ko' else h['tag_en'])}</p>
 <blockquote>“{e(h['quote_ko'] if l=='ko' else h['quote_en'])}”</blockquote><div class="stats"><span>{t['hpL']} <b>{h['hp']}</b></span><span>{t['combo']} <b>{h['combo']}</b></span></div></div></section>
 <section class="sec"><div class="wrap two"><div><div class="sh"><h2>{e(t['story'])}</h2></div>{bio}</div><div><div class="sh"><h2>{e(t['skills'])}</h2></div><ul class="skills">{skills}</ul></div></div></section>{turn}
-<nav class="pn wrap"><a href="/{l}/heroes/{prev['id']}/">← {e(prev['name'])}</a><a href="/{l}/heroes/">{e(t['roster'])}</a><a href="/{l}/heroes/{nxt['id']}/">{e(nxt['name'])} →</a></nav>'''
+{unm}<nav class="pn wrap"><a href="/{l}/heroes/{prev['id']}/">← {e(prev['name'])}</a><a href="/{l}/heroes/">{e(t['roster'])}</a><a href="/{l}/heroes/{nxt['id']}/">{e(nxt['name'])} →</a></nav>'''
         extra='<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>' if h['id']=='pixel' else ''
         out(f'/{l}/heroes/{h["id"]}/index.html',shell(l,f'{h["name"]} — LAST WAVE',h['tag_ko'] if l=='ko' else h['tag_en'],f'/{l}/heroes/{h["id"]}/',body,og=f'/assets/art/{h["id"]}_key_s.jpg' if h['art'] else None,extra_head=extra))
 
