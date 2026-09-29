@@ -119,3 +119,24 @@ footer{border-top:1px solid var(--line);padding:50px 0 40px;color:var(--muted);f
 .top .gicon{border-radius:6px;margin-right:8px;vertical-align:middle}
 .unmasked{padding:40px 0 70px}.um{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:40px;align-items:center}.um img{width:100%;border-radius:16px;display:block;box-shadow:0 0 60px #3d8bff33}.um p{color:var(--muted);font-size:17px;line-height:1.75;max-width:520px;word-break:keep-all}
 @media(max-width:800px){.um{grid-template-columns:1fr;gap:20px}.hero-copy .game-logo{width:96px;height:96px;border-radius:22px}}
+/* v9: PIXEL forms and Veil */
+.top .brand,.top .lang{flex-shrink:0}.top nav{min-width:0}
+.forms-teaser{background:radial-gradient(ellipse at 85% 20%,#112b50,transparent 65%),#0a111e;border-block:1px solid #234366}
+.forms-teaser h2{max-width:850px;line-height:1.25;margin:12px 0 22px}
+.forms-page h1{font-size:clamp(48px,7vw,100px);line-height:1.15;margin:24px 0}
+.form-index{display:flex;flex-wrap:wrap;gap:10px;margin:34px 0}
+.form-index a{padding:9px 18px;border:1px solid #314053;border-radius:30px;font-size:14px;color:#cbd8eb}
+.form-index a:hover,.form-index a:focus-visible{border-color:#79baff;color:white}
+.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.form-card{background:linear-gradient(150deg,#111c2b,#090d15);border:1px solid #293544;border-top:3px solid var(--form-color);border-radius:12px;padding:28px;scroll-margin-top:100px}
+.form-rarity{display:inline-block;color:var(--form-color);font-size:13px;font-weight:700;letter-spacing:.08em}
+.form-card h2{font-size:32px;line-height:1.2;margin:14px 0 26px;color:var(--form-color)}
+.form-card h2 small{display:block;font-size:12px;font-weight:500;color:#97a9bf;letter-spacing:.18em;margin-top:8px}
+.form-card dl{margin:0}.form-card dl>div{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid #ffffff10;font-size:14px}
+.form-card dt{color:#c8d4e4;overflow-wrap:anywhere}.form-card dd{margin:0;font-size:17px;font-weight:800;white-space:nowrap}.form-card dl>div:last-child dd{color:var(--form-color)}
+.veil-section{background:#080e19}.veil-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}.veil-grid figure,.pillar-concept{margin:0}
+.veil-grid img,.pillar-concept img{width:100%;height:auto;border-radius:14px;border:1px solid #243551;box-sizing:border-box}.veil-grid h2{line-height:1.2;margin:20px 0}
+figcaption{font-size:12px;line-height:1.6;color:#9aadc7;margin-top:12px}.transform-key{display:flex;align-items:center;gap:14px;color:#cfdfef}.transform-key kbd{display:grid;place-items:center;width:44px;height:44px;border:1px solid #5788c1;border-radius:8px;background:#142843;color:#b6deff;font:800 24px var(--font)}
+.veil-bonds{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid #253346}.veil-bonds li{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid #253346;font-size:13px}.veil-bonds span{color:#97abc5}.veil-bonds b{color:#71c5ff;letter-spacing:.08em}
+@media(max-width:1100px){.top{flex-wrap:wrap;gap:12px}.top nav{order:3;flex-basis:100%;margin:0;overflow-x:auto;white-space:nowrap}.top .lang{margin-left:auto}.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.veil-grid{gap:30px}}
+@media(max-width:700px){.form-grid,.veil-grid{grid-template-columns:1fr}.form-card{padding:24px}.form-card h2{margin-bottom:20px}.veil-grid{gap:28px}.form-index{gap:8px}.form-index a{padding:8px 14px}.forms-page h1{font-size:52px}}

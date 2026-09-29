@@ -1,0 +1,251 @@
+{
+  "updated": "2026-09-29",
+  "transformation_key": "Z",
+  "forms": [
+    {
+      "id": "blue",
+      "name_ko": "블루",
+      "name_en": "Blue",
+      "rarity_ko": "일반",
+      "rarity_en": "Common",
+      "color": "#41a7ff",
+      "skills": [
+        {
+          "name_ko": "화염 주먹",
+          "name_en": "Flame Fist",
+          "value": "60"
+        },
+        {
+          "name_ko": "푸른 파동",
+          "name_en": "Blue Wave",
+          "value": "120"
+        },
+        {
+          "name_ko": "팀 힐",
+          "name_en": "Team Heal",
+          "value": "+80"
+        },
+        {
+          "name_ko": "순간이동",
+          "name_en": "Teleport",
+          "value": ""
+        },
+        {
+          "name_ko": "푸른 기둥",
+          "name_en": "Blue Pillar",
+          "value": "2,500"
+        }
+      ]
+    },
+    {
+      "id": "nature",
+      "name_ko": "네이처",
+      "name_en": "Nature",
+      "rarity_ko": "에픽",
+      "rarity_en": "Epic",
+      "color": "#64d58a",
+      "skills": [
+        {
+          "name_ko": "덩굴 마무리",
+          "name_en": "Vine Finisher",
+          "value": "60"
+        },
+        {
+          "name_ko": "덩굴 속박",
+          "name_en": "Vine Bind",
+          "value": "100"
+        },
+        {
+          "name_ko": "회복",
+          "name_en": "Heal",
+          "value": "+100"
+        },
+        {
+          "name_ko": "자연 이동",
+          "name_en": "Nature Step",
+          "value": "30"
+        },
+        {
+          "name_ko": "자연의 심판",
+          "name_en": "Nature’s Judgment",
+          "value": "2,300"
+        }
+      ]
+    },
+    {
+      "id": "dark",
+      "name_ko": "다크",
+      "name_en": "Dark",
+      "rarity_ko": "에픽",
+      "rarity_en": "Epic",
+      "color": "#b695df",
+      "skills": [
+        {
+          "name_ko": "다크 펀치",
+          "name_en": "Dark Punch",
+          "value": "70"
+        },
+        {
+          "name_ko": "암흑 파동",
+          "name_en": "Dark Wave",
+          "value": "120"
+        },
+        {
+          "name_ko": "피해감소",
+          "name_en": "Damage Reduction",
+          "value": "50%"
+        },
+        {
+          "name_ko": "암흑 스텝",
+          "name_en": "Dark Step",
+          "value": ""
+        },
+        {
+          "name_ko": "공허 붕괴",
+          "name_en": "Void Collapse",
+          "value": "2,600"
+        }
+      ]
+    },
+    {
+      "id": "hell",
+      "name_ko": "헬",
+      "name_en": "Hell",
+      "rarity_ko": "레전더리",
+      "rarity_en": "Legendary",
+      "color": "#ff785f",
+      "skills": [
+        {
+          "name_ko": "헬 펀치",
+          "name_en": "Hell Punch",
+          "value": "70+30"
+        },
+        {
+          "name_ko": "지옥 파동",
+          "name_en": "Hell Wave",
+          "value": "140+30"
+        },
+        {
+          "name_ko": "공격력",
+          "name_en": "Attack Power",
+          "value": "+30%"
+        },
+        {
+          "name_ko": "헬 스텝",
+          "name_en": "Hell Step",
+          "value": "40"
+        },
+        {
+          "name_ko": "지옥 폭발",
+          "name_en": "Hell Explosion",
+          "value": "2,500"
+        }
+      ]
+    },
+    {
+      "id": "volt",
+      "name_ko": "볼트",
+      "name_en": "Volt",
+      "rarity_ko": "레전더리",
+      "rarity_en": "Legendary",
+      "color": "#f4d35e",
+      "skills": [
+        {
+          "name_ko": "썬더 펀치",
+          "name_en": "Thunder Punch",
+          "value": "65"
+        },
+        {
+          "name_ko": "전격 파동",
+          "name_en": "Electric Wave",
+          "value": "120"
+        },
+        {
+          "name_ko": "공속·이속",
+          "name_en": "Attack / Movement Speed",
+          "value": "+25%"
+        },
+        {
+          "name_ko": "번개 이동",
+          "name_en": "Lightning Step",
+          "value": "50"
+        },
+        {
+          "name_ko": "천둥 강림",
+          "name_en": "Thunder Descent",
+          "value": "2,400"
+        }
+      ]
+    },
+    {
+      "id": "light",
+      "name_ko": "라이트",
+      "name_en": "Light",
+      "rarity_ko": "레전더리",
+      "rarity_en": "Legendary",
+      "color": "#e5edff",
+      "skills": [
+        {
+          "name_ko": "라이트 펀치",
+          "name_en": "Light Punch",
+          "value": "60"
+        },
+        {
+          "name_ko": "빛의 파동",
+          "name_en": "Light Wave",
+          "value": "110"
+        },
+        {
+          "name_ko": "회복",
+          "name_en": "Heal",
+          "value": "+120"
+        },
+        {
+          "name_ko": "보호막",
+          "name_en": "Shield",
+          "value": "100"
+        },
+        {
+          "name_ko": "빛의 심판",
+          "name_en": "Light’s Judgment",
+          "value": "2,300"
+        }
+      ]
+    },
+    {
+      "id": "never",
+      "name_ko": "네버",
+      "name_en": "Never",
+      "rarity_ko": "히든",
+      "rarity_en": "Hidden",
+      "color": "#64ceff",
+      "skills": [
+        {
+          "name_ko": "무형 타격",
+          "name_en": "Formless Strike",
+          "value": "60"
+        },
+        {
+          "name_ko": "형태 붕괴",
+          "name_en": "Form Collapse",
+          "value": "110"
+        },
+        {
+          "name_ko": "베일 러시",
+          "name_en": "Veil Rush",
+          "value": "120"
+        },
+        {
+          "name_ko": "무형 회피",
+          "name_en": "Formless Dodge",
+          "value": ""
+        },
+        {
+          "name_ko": "무형붕괴",
+          "name_en": "Formless Collapse",
+          "value": "2,300"
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 # LAST WAVE 사이트 콘텐츠 — 영웅·위협·아레나·소식. 그림은 대표가 만든 site_art 만 쓴다.
 
 HEROES = [
- dict(id="pixel", name="PIXEL", ko="픽셀", role="MAIN", roleKo="주인공", hp=200, combo="20 · 25 · 30", art=True,
+ dict(id="pixel", name="PIXEL", ko="픽셀", role="MAIN", roleKo="주인공", hp=200, combo="60", art=True,
   tag_ko="WAVE와 깊은 관계가 있는 정체불명의 인물. 가면은 벗지 않는다.",
   tag_en="A figure of unknown origin, bound to the WAVE. The mask never comes off.",
   bio_ko=["손끝의 푸른 빛은 파도와 같은 것으로 만들어졌다. 그래서 파도를 밀어내고, 쓰러진 동료를 되살리고, 픽셀로 흩어졌다가 다시 모인다.",
@@ -13,19 +13,19 @@ HEROES = [
           "He does not speak. His last skill, BLUE PILLAR, drives straight into the heart of the wave."],
   quote_ko="가면은 얼굴이 아니라 약속이다.", quote_en="The mask is not a face. It is a promise.",
   unmasked=("pixel_unmasked.jpg","가면 아래","UNDER THE MASK","가면을 벗은 PIXEL. 손끝의 푸른 불꽃은 파도와 같은 것으로 만들어졌다. 위험이 오면 가면은 픽셀처럼 다시 조립된다.","PIXEL without the mask. The blue flame at his fingertips is made of the same thing as the wave. When danger comes, the mask reassembles itself, pixel by pixel."),
-  skills=[("Q","TSUNAMI","거대한 푸른 파도 100 + 넉백","A vast blue wave · 100 + knockback","wave"),
+  skills=[("Q","TSUNAMI","푸른 파동 120 + 넉백","Blue wave · 120 + knockback","wave"),
           ("E","TEAM HEAL","푸른 파동 회복 +80","Blue pulse · heal +80","pulse"),
           ("C","TELEPORT","푸른 픽셀로 흩어져 순간이동 · 무적","Scatter into pixels · blink · invulnerable","blink"),
           ("X","BLUE PILLAR","일반 워커 즉사 · 보스 2,500","Kills walkers outright · 2,500 to bosses","pillar")]),
- dict(id="bluenewbie", name="BLUE NEWBIE", ko="블루뉴비", role="MEDIC", roleKo="회복", hp=300, combo="15 · 15 · 25", art=True,
+ dict(id="bluenewbie", name="BLUE NEWBIE", ko="블루뉴비", role="MEDIC", roleKo="회복", hp=200, combo="15 · 15 · 25", art=True,
   tag_ko="회복 전문. 공격은 약하지만 버티는 힘이 누구보다 강하다.", tag_en="The medic. Weak strikes, the strongest will to stay standing.",
-  bio_ko=["안경 너머로 팀 전체의 체력을 본다. 네 기술 전부가 「남을 살리는」 것이고, 그래서 영웅 중 유일하게 HP가 300이다.",
+  bio_ko=["안경 너머로 팀 전체의 체력을 본다. 위기의 순간 팀을 회복시키고 전선을 지탱한다.",
           "블루 웨빙 스트랩은 장식이 아니다. 밤새 뛰어다니며 쓰러진 사람을 끌어올린 흔적이다."],
-  bio_en=["Behind the glasses he watches the whole team's health. All four skills exist to keep others alive — which is why he alone carries 300 HP.",
+  bio_en=["Behind the glasses he watches the whole team's health. His abilities keep the team alive and hold the line when it matters most.",
           "The blue webbing straps are not decoration. They are what is left after nights of dragging people back up."],
   quote_ko="내가 서 있는 한, 아무도 안 죽어.", quote_en="As long as I'm standing, nobody dies.",
   skills=[("Q","HEAL LINK","회복 링크 · 초당 +15 (8초)","Heal link · +15/s for 8s","link"),("E","HEAL BURST","즉시 +100 회복","Instant +100","burst"),
-          ("C","LIFE SHIELD","100 흡수 보호막 · 깨지면 +50 회복","100 shield · +50 heal on break","shield"),("X","ALL HEAL","완전 회복 +200 · 무적 1초","Full heal +200 · 1s invulnerable","all")]),
+          ("C","LIFE SHIELD","100 흡수 보호막 · 깨지면 +50 회복","100 shield · +50 heal on break","shield"),("X","LIFE WAVE","생명의 파동 · 팀원 전원 대량 회복","Life Wave · a powerful healing pulse for the entire team","all")]),
  dict(id="alfred", name="ALFRED", ko="알프레드", role="DRAGONS", roleKo="더블 드래곤", hp=200, combo="18 · 18 · 35", art=True,
   tag_ko="양 어깨에 붙은 두 마리 네온 용과 함께 싸운다. 모든 기술은 용에서 나온다.", tag_en="Fights with two neon dragons on his shoulders. Every skill comes from them.",
   bio_ko=["푸른 용과 보라 용. 앞서 달리고, 포효하고, 몸을 감아 지키고, 적을 하늘로 끌고 가 내리꽂는다.", "후드의 「001」은 번호가 아니라 이름이다. 용은 무기가 아니라 동료다."],
@@ -34,14 +34,14 @@ HEROES = [
   skills=[("Q","RAINBOW DASH","두 용이 앞서 달린다 · 돌진 + 무지개 잔상 30×3","The dragons run ahead · charge + rainbow trail 30×3","dash"),
           ("E","SHOCKWAVE","두 용의 포효 · 충격파 80 + 넉백","Twin roar · shockwave 80 + knockback","wave"),
           ("C","PRISM SHIELD","용들이 몸을 감는다 · 방어막 100 · 깨지면 폭발 60","The dragons coil · shield 100 · bursts for 60","shield"),
-          ("X","DRAGON FALL","두 용이 적을 물어 하늘로 끌고 가 내리꽂는다 1,000","Both dragons drag the enemy skyward and slam it down · 1,000","pillar")]),
+          ("X","DRAGON DESCENT","용의 강림 · 등에서 솟아난 에너지 용이 적 무리를 휩쓴다","An energy dragon emerges from his back and sweeps through enemies","pillar")]),
  dict(id="line", name="LINE", ko="라인", role="BLADE", roleKo="대검", hp=200, combo="25 · 30 · 45", art=True,
   tag_ko="거대한 대검. 직육면체 머리는 헬멧이 아니라 그 자체가 얼굴이다.", tag_en="A giant blade. The block-shaped head is not a helmet — it is the face.",
-  bio_ko=["검을 키우고, 바닥에서 불러내고, 적을 검 쪽으로 끌어당기고, 열다섯 자루를 연속으로 던진다.", "표정이 없어서 가장 무섭다. 어디서 왔는지 아무도 묻지 않았다."],
-  bio_en=["Grows the blade, calls blades up from the ground, pulls enemies toward it, throws fifteen in a row.", "No expression — which is what makes him the most frightening. Nobody ever asked where he came from."],
+  bio_ko=["검을 키우고, 바닥에서 불러내고, 적을 검 쪽으로 끌어당기고, 열다섯 자루를 공중에서 동시에 떨어뜨린다.", "표정이 없어서 가장 무섭다. 어디서 왔는지 아무도 묻지 않았다."],
+  bio_en=["Grows the blade, calls blades up from the ground, pulls enemies toward it, drops fifteen blades from the sky at once.", "No expression — which is what makes him the most frightening. Nobody ever asked where he came from."],
   quote_ko="선을 넘었으면, 잘린다.", quote_en="Cross the line, and you're cut.",
   skills=[("Q","GIANT BLADE","검이 거대해진다 · 공격 +60% · 주변 10","The blade grows · +60% attack · 10 around","blade"),("E","BLADE SUMMON","바닥에서 검 소환 · 적마다 40","Blades from the ground · 40 each","summon"),
-          ("C","MAGNET BLADE","적들을 검 쪽으로 끌어당김 20","Pulls enemies to the blade · 20","magnet"),("X","15 BLADES","검 15자루 연속 투척 70×15","Fifteen blades thrown · 70×15","multi")]),
+          ("C","MAGNET BLADE","적들을 검 쪽으로 끌어당김 20","Pulls enemies to the blade · 20","magnet"),("X","BLADE RAIN","검의 폭우 · 공중의 검 15자루를 동시에 낙하시킨다","Fifteen blades form overhead and fall simultaneously","multi")]),
  dict(id="iris", name="IRIS", ko="아이리스", role="PORTAL", roleKo="포털", hp=200, combo="15 · 20 · 25", art=True,
   tag_ko="경계를 여는 사람. 포털로 길을 만들고, 누구도 그다음 수를 읽지 못한다.", tag_en="She opens the borders. Portals make the path, and nobody reads her next move.",
   bio_ko=["헤드폰을 목에 건 채 균열 한가운데를 걷는다. 그녀에게 벽은 벽이 아니라 아직 열지 않은 문이다.",
@@ -52,7 +52,7 @@ HEROES = [
   skills=[("Q","PORTAL","두 지점을 잇는 포털 · 아군 이동","A portal linking two points · moves allies","link"),
           ("E","BLINK","짧은 순간이동 · 잠시 무적","Short-range blink · brief invulnerability","blink"),
           ("C","SAFE ZONE","포털 방벽 · 아군 받는 피해 30% 감소 4초","Portal barrier · −30% damage to allies for 4s","shield"),
-          ("X","NEW DIMENSION","거대한 차원문 · 적을 삼켰다 무작위로 떨어뜨림 60","A vast rift gate · swallows enemies and drops them at random · 60","burst")]),
+          ("X","DIMENSION COLLAPSE","차원 붕괴 · 포탈로 주변 적을 끌어당겨 공간 에너지로 공격","A vast portal pulls nearby enemies in and attacks with spatial energy","burst")]),
 ]
 
 # 원화(팀 아트) 기준 영웅은 다섯 — ROOKIE 는 사이트에서 뺌 (2026-09-25 대표 확정). 되돌리려면 HEROES 로 옮긴다.
@@ -67,19 +67,19 @@ RETIRED = [
 ]
 
 THREATS = [
- dict(id="lurker", name="LURKER", ko="러커", wave=1, hp=80, dmg=10, speed="보통", speed_en="Normal", kind="근접", kind_en="Melee",
+ dict(id="lurker", name="LURKER", ko="러커", wave=1, hp=120, dmg=10, speed="보통", speed_en="Normal", kind="근접", kind_en="Melee",
   ko_d="가장 먼저 오는 것. 어둠에서 태어나, 어둠으로 돌아간다.", en_d="The first to come. Born from the dark, returning to it."),
- dict(id="runner", name="RUNNER", ko="러너", wave=3, hp=60, dmg=8, speed="매우 빠름", speed_en="Very fast", kind="근접", kind_en="Melee",
+ dict(id="runner", name="RUNNER", ko="러너", wave=3, hp=80, dmg=8, speed="매우 빠름", speed_en="Very fast", kind="근접", kind_en="Melee",
   ko_d="중거리에서 한 번씩 달려든다. 잔상이 보이면 이미 늦다.", en_d="Lunges from mid range. If you see the afterimage, it is already too late."),
- dict(id="brute", name="BRUTE", ko="브루트", wave=5, hp=500, dmg=35, speed="느림", speed_en="Slow", kind="강타", kind_en="Heavy",
+ dict(id="brute", name="BRUTE", ko="브루트", wave=5, hp=600, dmg=35, speed="느림", speed_en="Slow", kind="강타", kind_en="Heavy",
   ko_d="느리지만 한 방이 35. 바위가 걸어온다.", en_d="Slow, but one blow is 35. The rock walks."),
- dict(id="spitter", name="SPITTER", ko="스피터", wave=7, hp=100, dmg=15, speed="느림", speed_en="Slow", kind="원거리", kind_en="Ranged",
+ dict(id="spitter", name="SPITTER", ko="스피터", wave=7, hp=150, dmg=15, speed="느림", speed_en="Slow", kind="원거리", kind_en="Ranged",
   ko_d="거리를 두고 뱉는다. 초록빛을 보면 옆으로.", en_d="Keeps its distance and spits. Green light — step aside."),
- dict(id="crawler", name="CRAWLER", ko="크롤러", wave=8, hp=120, dmg=20, speed="빠름", speed_en="Fast", kind="기어옴", kind_en="Crawler",
+ dict(id="crawler", name="CRAWLER", ko="크롤러", wave=8, hp=180, dmg=20, speed="빠름", speed_en="Fast", kind="기어옴", kind_en="Crawler",
   ko_d="낮게, 빠르게. 바닥을 보지 않으면 먼저 물린다.", en_d="Low and fast. Watch the ground or it bites first."),
- dict(id="hunter", name="HUNTER", ko="헌터", wave=11, hp=250, dmg=30, speed="빠름", speed_en="Fast", kind="근접", kind_en="Melee",
+ dict(id="hunter", name="HUNTER", ko="헌터", wave=11, hp=300, dmg=30, speed="빠름", speed_en="Fast", kind="근접", kind_en="Melee",
   ko_d="선로 위를 달린다. 그들은 PIXEL만 노린다.", en_d="Runs the rails. They hunt only PIXEL."),
- dict(id="reaper", name="REAPER", ko="리퍼", wave=16, hp=400, dmg=40, speed="보통", speed_en="Normal", kind="강타", kind_en="Heavy",
+ dict(id="reaper", name="REAPER", ko="리퍼", wave=16, hp=450, dmg=40, speed="보통", speed_en="Normal", kind="강타", kind_en="Heavy",
   ko_d="후반의 벽. 낫이 푸르게 빛나면 한 명은 사라진다.", en_d="The late-game wall. When the scythe glows blue, someone is gone."),
 ]
 BOSSES = [
@@ -131,6 +131,8 @@ ARENAS = [
 ]
 
 NEWS = [
+ ("2026-09-29","픽셀의 일곱 형태 · 베일 공개","블루부터 히든 네버까지, 일곱 형태의 능력과 등급을 공개한다. 네버의 종족은 베일. Z로 변신하는 전투를 준비한다. MacBook과 iPhone을 목표로 개발 중이다.",
+  "Seven PIXEL forms · introducing Veil","Explore seven forms, from Blue to the hidden Never. Never belongs to the Veil species. Transformation uses Z on Mac; development targets MacBook and iPhone."),
  ("2026-09-25","새 영웅 IRIS · 다섯 영웅 확정","포털을 여는 아이리스가 합류했다. 팀 원화 그대로 PIXEL · LINE · BLUE NEWBIE · ALFRED · IRIS, 영웅은 다섯. 「경계는, 내가 정해.」",
   "New hero: IRIS · the five","IRIS, the portal-opener, joins. Straight from the team art: PIXEL, LINE, BLUE NEWBIE, ALFRED and IRIS — five heroes. “I decide where the border is.”"),
  ("2026-09-24","영웅 5명 전원 · 새 보스 3종","BLUE NEWBIE · ROOKIE · LINE의 키아트가 나오며 영웅 다섯 명이 모두 모였다. 심연의 왕(웨이브 30), 공허의 심장(웨이브 50), 최종 보스 절망의 창조자(웨이브 100)를 공개한다.",
