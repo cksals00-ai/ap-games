@@ -16,7 +16,7 @@ HEROES = [
   skills=[("Q","TSUNAMI","푸른 파동 120 + 넉백","Blue wave · 120 + knockback","wave"),
           ("E","TEAM HEAL","푸른 파동 회복 +80","Blue pulse · heal +80","pulse"),
           ("C","TELEPORT","푸른 픽셀로 흩어져 순간이동 · 무적","Scatter into pixels · blink · invulnerable","blink"),
-          ("X","BLUE PILLAR","일반 워커 즉사 · 보스 2,500","Kills walkers outright · 2,500 to bosses","pillar")]),
+          ("X","BLUE PILLAR","일반 적 즉사 · 보스 2,500","Kills ordinary enemies outright · 2,500 to bosses","pillar")]),
  dict(id="bluenewbie", name="BLUE NEWBIE", ko="블루뉴비", role="MEDIC", roleKo="회복", hp=200, combo="15 · 15 · 25", art=True,
   tag_ko="회복 전문. 공격은 약하지만 버티는 힘이 누구보다 강하다.", tag_en="The medic. Weak strikes, the strongest will to stay standing.",
   bio_ko=["안경 너머로 팀 전체의 체력을 본다. 위기의 순간 팀을 회복시키고 전선을 지탱한다.",
