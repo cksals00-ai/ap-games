@@ -23,6 +23,22 @@ T={
    platform='MacBook · iPhone / In development',studio='AP Games is the games label of A.P Holdings.',privacy='Privacy policy',company='Company',
    waves='Waves',boss='Boss',enemy='Enemy',footer_note='LAST WAVE © 2026 AP Games / A.P Holdings. All characters, art and lore are assets of AP Games.'),
 }
+# Current playable scope; historical catalog/news below remains dated reference.
+T['ko'].update(heroLead='능력으로 싸우는 리얼 3D 액션. 개발판은 252m 강남 거리에서 다섯 영웅과 다섯 웨이브를 다룬다. 1인칭과 3인칭을 전환하며 마지막 파도를 버텨라.',
+ feat=[('3D','강남 개발판','젖은 밤거리와 실제 3D 공간. 최종 아트와 플레이 감각을 다듬는 중이다.'),('FPS','능력 기반 전투','총기 없이 근접 연속 공격, 원거리 에너지, 방향 회피와 영웅별 궁극기로 싸운다. 1·3인칭을 전환할 수 있다.'),('5','현재 다섯 웨이브','워커와 러너 총 73마리. PIXEL·BLUE NEWBIE·ALFRED·LINE·IRIS를 선택한다.')],
+ threatsLead='적·보스 세계관과 향후 로스터. 현재 강남 다섯 웨이브에는 워커와 러너가 등장한다.',arenasLead='현재 강남 1–5웨이브 · 다른 구역과 50·100웨이브 구상은 향후 로드맵.',wave='기존 기획 웨이브')
+T['en'].update(heroLead='Real-3D action powered by hero abilities. The development preview covers five heroes and five waves along a 252m Gangnam street. Switch between first- and third-person views and survive the last wave.',
+ feat=[('3D','Gangnam preview','A wet night street in real 3D space. Final art and play feel are still being refined.'),('FPS','Ability-driven combat','Fight without firearms using melee combos, ranged energy, directional dodges and distinct hero ultimates. Switch between first- and third-person views.'),('5','Five current waves','73 Walkers and Runners. Choose PIXEL, BLUE NEWBIE, ALFRED, LINE or IRIS.')],
+ threatsLead='Enemy and boss lore and future roster. The current five Gangnam waves feature Walkers and Runners.',arenasLead='Gangnam waves 1–5 today · other districts and the 50/100-wave concepts are a future roadmap.',wave='Earlier concept wave')
+
+def development_status(lang):
+    ko=lang=='ko'
+    title='현재 개발 범위 · 2026-10-01' if ko else 'Current development scope · 2026-10-01'
+    text=('다섯 영웅의 기본 HP는 모두 200. VITA와 NEVER는 3D 결합 전투가 통합되어 있으며, 나머지 네 베일은 기획 단계다. 로컬 동료 한 명을 지원하며 멀티플레이는 아니다. 현재 개발판의 기본 시점은 3인칭이고 1인칭으로 전환할 수 있다.' if ko else 'All five heroes have 200 base HP. VITA and NEVER have integrated 3D bonding combat; four other Veils remain concepts. One local companion is supported; multiplayer is not implemented. The current development preview starts in third person and can switch to first person.')
+    waves='6 W · 8 W + 2 R · 10 W + 4 R · 12 W + 6 R · 15 W + 10 R'
+    note=('W = 워커(100 HP), R = 러너(80 HP). 워커 외형은 현재 러커 모델을 임시 사용하며, 별도 러커 설정 120 HP는 유지한다. 보스·다른 구역·강화 카드·50/100웨이브는 현재 플레이 범위에 포함되지 않는다. 최종 아트·재미와 iPhone 실기기 조작·성능은 아직 검증 중이다.' if ko else 'W = Walker (100 HP), R = Runner (80 HP). Walker temporarily uses the Lurker appearance; the separate Lurker definition retains 120 HP. Bosses, other districts, upgrade cards and 50/100 waves are outside the current playable scope. Final art, fun and physical iPhone controls and performance still need validation.')
+    return f'<section class="sec" id="development"><div class="wrap"><div class="sh"><h2>{title}</h2></div><p class="lead">{text}</p><p>{waves}</p><p class="note">{note}</p></div></section>'
+
 ROLE_EN={'PORTAL':'Portal','MAIN':'Main','MEDIC':'Medic','STARTER':'Starter','DRAGONS':'Double Dragon','BLADE':'Blade'}
 
 def glyph(k):
@@ -77,11 +93,12 @@ for l in ('ko','en'):
 <div class="wrap hero-copy"><img class="game-logo" src="/assets/lastwave_logo.png" alt="LAST WAVE" width="132" height="132"><span class="eyebrow">AP GAMES PRESENTS</span><div class="genre"><b>3D</b><b>FPS</b><span>{e(t["genre"])}</span></div><h1>{e(t['heroTitle'][0])}<br>{e(t['heroTitle'][1])}</h1><p class="lead">{e(t['heroLead'])}</p>
 <div class="actions"><a class="btn" href="/{l}/heroes/">{e(t['cta'])}</a><a class="btn ghost" href="#intro">{e(t['cta2'])}</a></div><p class="plat">{e(t['platform'])}</p></div></section>
 <section class="feat"><div class="wrap"><div class="sh"><h2>{e(t['featTitle'])}</h2><p>{e(t['featLead'])}</p></div><div class="fgrid3">{feats}</div></div></section>
+{development_status(l)}
 {forms_teaser(l)}
 <section class="wide"><img src="/assets/art/hero_wide.jpg" alt="PIXEL — LAST WAVE key art" loading="lazy"></section>
 <section class="sec"><div class="wrap"><div class="sh"><h2>{e(t['roster'])}</h2><p>{e(t['rosterLead'])}</p><a class="more" href="/{l}/heroes/">{e(t['all'])} →</a></div><div class="hgrid">{heroes}</div></div></section>
 <section class="sec dark"><div class="wrap"><div class="sh"><h2>{e(t['threats'])}</h2><p>{e(t['threatsLead'])}</p><a class="more" href="/{l}/threats/">{e(t['all'])} →</a></div><div class="tstrip">{threats}</div></div><img class="band" src="/assets/art/threats_wide.jpg" alt="" loading="lazy"></section>
-<section class="sec" id="intro"><div class="wrap"><div class="sh"><h2>INTRO</h2><p>{'2026 · 61초' if l=='ko' else '2026 · 61 s'}</p></div><video class="intro" src="/assets/video/opening.mp4?v=5" poster="/assets/video/hero_poster.jpg?v=4" controls preload="none" playsinline></video></div></section>
+<section class="sec" id="intro"><div class="wrap"><div class="sh"><h2>INTRO</h2><p>{'2026 · 61초 · 기존 콘셉트 필름 (현재 게임 오프닝과 다름)' if l=='ko' else '2026 · 61 s · earlier concept film (differs from the current game opening)'}</p></div><video class="intro" src="/assets/video/opening.mp4?v=5" poster="/assets/video/hero_poster.jpg?v=4" controls preload="none" playsinline></video></div></section>
 <section class="sec"><div class="wrap"><div class="sh"><h2>{e(t['news'])}</h2><a class="more" href="/{l}/news/">{e(t['all'])} →</a></div><div class="ngrid">{news}</div></div></section>'''
     out(f'/{l}/index.html',shell(l,'LAST WAVE — 3D FPS | AP Games',t['heroLead'],f'/{l}/',body))
 

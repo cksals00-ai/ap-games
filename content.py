@@ -3,8 +3,8 @@
 
 HEROES = [
  dict(id="pixel", name="PIXEL", ko="픽셀", role="MAIN", roleKo="주인공", hp=200, combo="60", art=True,
-  tag_ko="WAVE와 깊은 관계가 있는 정체불명의 인물. 가면은 벗지 않는다.",
-  tag_en="A figure of unknown origin, bound to the WAVE. The mask never comes off.",
+  tag_ko="WAVE와 깊은 관계가 있는 정체불명의 인물. 전투에서는 푸른 X 가면을 쓴다.",
+  tag_en="A figure of unknown origin, bound to the WAVE. A blue-X mask marks his combat identity.",
   bio_ko=["손끝의 푸른 빛은 파도와 같은 것으로 만들어졌다. 그래서 파도를 밀어내고, 쓰러진 동료를 되살리고, 픽셀로 흩어졌다가 다시 모인다.",
           "서울역 지하 연구소의 기록에는 「PROJECT: PIXEL」이라는 이름이 남아 있다. 그는 만들어진 존재인가, 아니면 균열이 처음 열린 자리 그 자체인가.",
           "말이 없다. 대신 마지막 기술 BLUE PILLAR가 파도의 심장을 그대로 찌른다."],
@@ -131,6 +131,8 @@ ARENAS = [
 ]
 
 NEWS = [
+ ("2026-10-01","강남 개발판 · 다섯 웨이브와 두 베일","252m 강남 구간에 다섯 영웅, 워커·러너 총 73마리, 1·3인칭 전투와 VITA·NEVER 결합을 통합했다. AP Games 오프닝에는 가면을 벗은 PIXEL의 얼굴과 승규의 곡을 반영했다. 개발 중이며 최종 아트·재미·iPhone 실기기 검증은 진행 과제다. 다른 구역과 보스, 50·100웨이브 구상은 향후 계획이다.",
+  "Gangnam development preview · five waves and two Veils","The 252m Gangnam section now integrates five heroes, 73 Walkers and Runners, first- and third-person combat, and VITA and NEVER bonding. The AP Games game opening includes unmasked PIXEL artwork and Seunggyu’s song. Final art, play feel and physical iPhone validation remain in progress. Other districts, bosses and the 50/100-wave concepts remain future plans."),
  ("2026-09-29","픽셀의 일곱 형태 · 베일 공개","블루부터 히든 네버까지, 일곱 형태의 능력과 등급을 공개한다. 네버의 종족은 베일. Z로 변신하는 전투를 준비한다. MacBook과 iPhone을 목표로 개발 중이다.",
   "Seven PIXEL forms · introducing Veil","Explore seven forms, from Blue to the hidden Never. Never belongs to the Veil species. Transformation uses Z on Mac; development targets MacBook and iPhone."),
  ("2026-09-25","새 영웅 IRIS · 다섯 영웅 확정","포털을 여는 아이리스가 합류했다. 팀 원화 그대로 PIXEL · LINE · BLUE NEWBIE · ALFRED · IRIS, 영웅은 다섯. 「경계는, 내가 정해.」",
