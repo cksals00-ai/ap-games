@@ -34,10 +34,10 @@ T['en'].update(heroLead='Real-3D action powered by hero abilities. The developme
 def development_status(lang):
     ko=lang=='ko'
     title='현재 개발 범위 · 2026-10-01' if ko else 'Current development scope · 2026-10-01'
-    text=('다섯 영웅의 기본 HP는 모두 200. VITA와 NEVER는 3D 결합 전투가 통합되어 있으며, 나머지 네 베일은 기획 단계다. 로컬 동료 한 명을 지원하며 멀티플레이는 아니다. 현재 개발판의 기본 시점은 3인칭이고 1인칭으로 전환할 수 있다.' if ko else 'All five heroes have 200 base HP. VITA and NEVER have integrated 3D bonding combat; four other Veils remain concepts. One local companion is supported; multiplayer is not implemented. The current development preview starts in third person and can switch to first person.')
-    waves='6 W · 8 W + 2 R · 10 W + 4 R · 12 W + 6 R · 15 W + 10 R'
-    note=('W = 워커(100 HP), R = 러너(80 HP). 워커 외형은 현재 러커 모델을 임시 사용하며, 별도 러커 설정 120 HP는 유지한다. 보스·다른 구역·강화 카드·50/100웨이브는 현재 플레이 범위에 포함되지 않는다. 최종 아트·재미와 iPhone 실기기 조작·성능은 아직 검증 중이다.' if ko else 'W = Walker (100 HP), R = Runner (80 HP). Walker temporarily uses the Lurker appearance; the separate Lurker definition retains 120 HP. Bosses, other districts, upgrade cards and 50/100 waves are outside the current playable scope. Final art, fun and physical iPhone controls and performance still need validation.')
-    return f'<section class="sec" id="development"><div class="wrap"><div class="sh"><h2>{title}</h2></div><p class="lead">{text}</p><p>{waves}</p><p class="note">{note}</p></div></section>'
+    text=('다섯 영웅, 다섯 웨이브, 총 73마리의 워커와 러너. 기본 HP 200의 영웅을 선택해 근접 연속 공격, 원거리 에너지, 방향 회피와 궁극기로 싸우세요. 1인칭과 3인칭을 전환할 수 있습니다.' if ko else 'Five heroes, five waves and 73 Walkers and Runners. Choose a hero with 200 base HP and fight with melee combos, ranged energy, directional dodges and an ultimate. Switch between first- and third-person views.')
+    bonds=('현재 개발판에는 VITA와 NEVER의 결합 전투가 있으며, 나머지 네 베일은 향후 계획입니다. 로컬 AI 동료 한 명과 함께 싸울 수 있습니다. 멀티플레이는 지원하지 않습니다.' if ko else 'VITA and NEVER bonding combat is part of the current preview; four more Veils are planned. Fight alongside one local AI companion. Multiplayer is not supported.')
+    note=('MacBook과 iPhone용으로 개발 중입니다. 거리의 분위기와 전투 감각을 다듬고 있으며, 다른 구역·보스·강화 카드와 50·100웨이브 구상은 향후 로드맵입니다.' if ko else 'In development for MacBook and iPhone. We are refining the street atmosphere and combat feel. Other districts, bosses, upgrade cards and the 50/100-wave concepts remain on the future roadmap.')
+    return f'<section class="sec" id="development"><div class="wrap"><div class="sh"><h2>{title}</h2></div><p class="lead">{text}</p><p>{bonds}</p><p class="note">{note}</p></div></section>'
 
 ROLE_EN={'PORTAL':'Portal','MAIN':'Main','MEDIC':'Medic','STARTER':'Starter','DRAGONS':'Double Dragon','BLADE':'Blade'}
 

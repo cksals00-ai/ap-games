@@ -42,7 +42,7 @@ def forms_body(lang):
 <div><span class="eyebrow">NEVER / VEIL</span><h2>{'존재한다.<br>그리고 변한다.' if ko else 'Exist.<br>And become.'}</h2>
 <p class="lead">{'이름은 네버. 종족은 베일. 픽셀과 결합하며, 무형의 힘으로 전투의 모습을 바꾼다.' if ko else 'The name is Never. The species is Veil. Bonded with PIXEL, formless power changes the shape of combat.'}</p>
 <p class="transform-key"><kbd>Z</kbd><span>{'베일 변신 · Mac 조작' if ko else 'Veil transformation · Mac control'}</span></p>
-<p class="note">{'개발판에는 터치 변신 버튼도 구현되어 있습니다. 최종 iPhone 실기기 조작 검증은 남아 있습니다.' if ko else 'A touch transformation button is implemented in the preview. Final physical iPhone control validation remains pending.'}</p>
+<p class="note">{'iPhone 버전도 함께 개발 중입니다.' if ko else 'An iPhone version is also in development.'}</p>
 <ul class="veil-bonds" aria-label="{'공개된 결합 관계' if ko else 'Revealed bonds'}">{bonds}</ul>
 <p class="note">{'표는 결합 후 HP. VITA·NEVER는 통합, EMBER·EDGE·RIFT·PULSE는 기획 단계다. ROOKIE는 향후 캐릭터이며 현재 선택 영웅은 다섯 명이다.' if ko else 'HP values are after bonding. VITA and NEVER are integrated; EMBER, EDGE, RIFT and PULSE remain concepts. ROOKIE is a future character; five heroes are currently selectable.'}</p>
 <p class="note">{'VITA: 연속 공격 25/30/60 · Q 100 · E 120 · C 보호막 150 · X 1,500 + 회복/소생.' if ko else 'VITA: combo 25/30/60 · Q 100 · E 120 · C shield 150 · X 1,500 + heal/revive.'}</p>
