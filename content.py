@@ -131,6 +131,8 @@ ARENAS = [
 ]
 
 NEWS = [
+  ("2026-10-02","오프닝 v5 · LINE의 변신","LINE은 처음엔 맨얼굴로 동료들과 함께 있다가, 대피소에 브루트가 들이닥치는 순간 금속판이 날아와 박스 헬멧으로 조립된다. 승규의 곡을 오프닝 전체에 깔았다. 게임과 사이트에 같은 영상이 들어간다.",
+   "Opening v5 · LINE transforms","LINE starts bare-faced alongside the others; when a Brute breaks into the shelter, metal plates fly in and lock into his box helmet. Seunggyu’s song now runs under the whole opening. The game and this site share the same film."),
  ("2026-10-01","강남 개발판 · 다섯 웨이브와 두 베일","252m 강남 구간에 다섯 영웅, 워커·러너 총 73마리, 1·3인칭 전투와 VITA·NEVER 결합을 통합했다. AP Games 오프닝에는 가면을 벗은 PIXEL의 얼굴과 승규의 곡을 반영했다. 거리의 분위기와 전투 감각, iPhone 버전을 계속 개발하고 있다. 다른 구역과 보스, 50·100웨이브 구상은 향후 계획이다.",
   "Gangnam development preview · five waves and two Veils","The 252m Gangnam section now integrates five heroes, 73 Walkers and Runners, first- and third-person combat, and VITA and NEVER bonding. The AP Games game opening includes unmasked PIXEL artwork and Seunggyu’s song. The street atmosphere, combat feel and iPhone version remain in development. Other districts, bosses and the 50/100-wave concepts remain future plans."),
  ("2026-09-29","픽셀의 일곱 형태 · 베일 공개","블루부터 히든 네버까지, 일곱 형태의 능력과 등급을 공개한다. 네버의 종족은 베일. Z로 변신하는 전투를 준비한다. MacBook과 iPhone을 목표로 개발 중이다.",
