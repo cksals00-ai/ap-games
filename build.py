@@ -49,16 +49,20 @@ def glyph(k):
        'blade':'M6 26L24 8l2-2 2 2-2 2L8 28zM20 12l4 4','summon':'M10 28V12l3 4 3-6 3 6 3-4v16','magnet':'M10 6v10a6 6 0 0 0 12 0V6M8 6h4M20 6h4','multi':'M6 26L14 18M12 26L20 18M18 26L26 18M14 18l2-2M20 18l2-2M26 18l2-2'}
     return f'<svg viewBox="0 0 32 32" aria-hidden="true"><path d="{d.get(k,d["dash"])}"/></svg>'
 
+for key in T:
+    T[key]['nav']=[('/'+key+'/', '홈' if key=='ko' else 'Home'),('/'+key+'/rankers/','RANKERS'),('/'+key+'/lastwave/','LAST WAVE · '+('테스트 버전' if key=='ko' else 'Test version')),('/'+key+'/board/','게시판' if key=='ko' else 'Community')]
+    T[key]['footer_note']='AP Games © 2026 AP Holdings.'
+
 def shell(l,title,desc,path,body,og=None,extra_head=''):
     t=T[l]; alt=f'/{t["other"]}{path[3:]}'
-    nav=''.join(f'<a href="{h}"{" class=on" if path==h or (h!=f"/{l}/" and path.startswith(h)) else ""}>{e(n)}</a>' for h,n in t['nav'])
+    nav='<a href="/'+l+'/rankers/">RANKERS</a><a href="/ko/play/">'+('게임 · 로그인' if l=='ko' else 'Games · Sign in')+'</a>'+''.join(f'<a href="{h}"{" class=on" if path==h or (h!=f"/{l}/" and path.startswith(h)) else ""}>{e(n)}</a>' for h,n in t['nav'])
     og=og or '/assets/art/hero_wide_s.jpg'
     return f'''<!doctype html><html lang="{l}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(title)}</title>
 <meta name="description" content="{e(desc,True)}"><link rel="canonical" href="{ORIGIN}{path}"><link rel="alternate" hreflang="{t['other']}" href="{ORIGIN}{alt}">
 <meta property="og:title" content="{e(title,True)}"><meta property="og:description" content="{e(desc,True)}"><meta property="og:image" content="{ORIGIN}{og}"><meta property="og:url" content="{ORIGIN}{path}"><meta name="theme-color" content="#06080d">
 <link rel="icon" href="/assets/ap_games_mark.svg"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v=9">{extra_head}</head><body>
-<header class="top"><a class="brand" href="/{l}/"><img src="/assets/ap_games_wordmark.svg" alt="AP Games" height="22"><img class="gicon" src="/assets/lastwave_icon64.png" width="22" height="22" alt=""><span class="game">LAST WAVE</span></a><nav>{nav}</nav><a class="lang" href="{alt}">{t['otherLabel']}</a></header>
+<header class="top"><a class="brand" href="/{l}/"><img src="/assets/ap_games_wordmark.svg" alt="AP Games" height="22"><img class="gicon" src="/assets/lastwave_icon64.png" width="22" height="22" alt=""><span class="game">{('게임 플랫폼' if l=='ko' else 'Game platform')}</span></a><nav>{nav}</nav><a class="lang" href="{alt}">{t['otherLabel']}</a></header>
 <main>{body}</main>
 <footer><div class="wrap"><div class="fgrid"><div><img src="/assets/ap_games_wordmark.svg" alt="AP Games" height="20"><p>{e(t['studio'])}</p></div>
 <div><a href="https://www.apholdings.kr/{l}/">{e(t['company'])} — apholdings.kr</a><br><a href="https://www.apholdings.kr/lastwave/">{e(t['privacy'])}</a></div></div><p class="fine">{e(t['footer_note'])}</p></div></footer>
@@ -100,7 +104,7 @@ for l in ('ko','en'):
 <section class="sec dark"><div class="wrap"><div class="sh"><h2>{e(t['threats'])}</h2><p>{e(t['threatsLead'])}</p><a class="more" href="/{l}/threats/">{e(t['all'])} →</a></div><div class="tstrip">{threats}</div></div><img class="band" src="/assets/art/threats_wide.jpg" alt="" loading="lazy"></section>
 <section class="sec" id="intro"><div class="wrap"><div class="sh"><h2>INTRO</h2><p>{'2026 · 60초 · 게임 오프닝 · 음악 승규' if l=='ko' else '2026 · 60 s · game opening · music by Seunggyu'}</p></div><video class="intro" src="/assets/video/opening.mp4?v=6" poster="/assets/video/hero_poster.jpg?v=5" controls preload="none" playsinline></video></div></section>
 <section class="sec"><div class="wrap"><div class="sh"><h2>{e(t['news'])}</h2><a class="more" href="/{l}/news/">{e(t['all'])} →</a></div><div class="ngrid">{news}</div></div></section>'''
-    out(f'/{l}/index.html',shell(l,'LAST WAVE — 3D FPS | AP Games',t['heroLead'],f'/{l}/',body))
+    out(f'/{l}/lastwave/index.html',shell(l,'LAST WAVE — '+('테스트 버전' if l=='ko' else 'Test Version')+' | AP Games',t['heroLead'],f'/{l}/lastwave/', '<div class="wrap"><p class="test-label">'+('테스트 버전 · 개발 중 · 공개 웹 플레이 준비 중' if l=='ko' else 'Test version · In development · Public web play in preparation')+'</p></div>'+body))
 
     # FORMS / VEIL
     form_title = "픽셀 형태·베일" if l == "ko" else "PIXEL Forms & Veil"
@@ -160,7 +164,7 @@ for l in ('ko','en'):
     for h in RETIRED:  # 빠진 영웅의 옛 주소는 영웅 목록으로
         out(f'/{l}/heroes/{h["id"]}/index.html',f'<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/{l}/heroes/"><link rel="canonical" href="{ORIGIN}/{l}/heroes/"></head><body></body></html>')
 out('/CNAME','games.apholdings.kr'); out('/.nojekyll','')
-urls=[f'/{l}/{s}' for l in ('ko','en') for s in ['','heroes/','forms/','threats/','arenas/','news/','board/']+[f'heroes/{h["id"]}/' for h in HEROES]]
+urls=[f'/{l}/{s}' for l in ('ko','en') for s in ['','rankers/','lastwave/','heroes/','forms/','threats/','arenas/','news/','board/']+[f'heroes/{h["id"]}/' for h in HEROES]]
 out('/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{ORIGIN}{u}</loc></url>' for u in urls)+'</urlset>')
 out('/robots.txt',f'User-agent: *\nAllow: /\nSitemap: {ORIGIN}/sitemap.xml\n')
 print('built',len(urls),'pages')
