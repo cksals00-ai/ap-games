@@ -3,3 +3,5 @@
 .animal{width:150px;height:170px;object-fit:contain;display:block;margin:0 auto 16px}.panel>button{margin:6px}.panel label{display:block}output{float:right;color:#ffe354}
 
 .board-filters{display:flex;gap:18px;flex-wrap:wrap;margin:16px 0}.board-filters label{display:flex;gap:8px;align-items:center}.board-filters [hidden]{display:none}
+
+.character-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.character-thumb{display:block;width:90px;height:120px;object-fit:contain;margin:auto}@media(max-width:650px){.character-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
