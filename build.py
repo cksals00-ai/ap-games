@@ -55,7 +55,7 @@ for key in T:
 
 def shell(l,title,desc,path,body,og=None,extra_head=''):
     t=T[l]; alt=f'/{t["other"]}{path[3:]}'
-    nav='<a href="/'+l+'/rankers/">RANKERS</a><a href="/ko/play/">'+('게임 · 로그인' if l=='ko' else 'Games · Sign in')+'</a>'+''.join(f'<a href="{h}"{" class=on" if path==h or (h!=f"/{l}/" and path.startswith(h)) else ""}>{e(n)}</a>' for h,n in t['nav'])
+    nav='<a href="/'+l+'/">'+('홈' if l=='ko' else 'Home')+'</a><a href="/'+l+'/rankers/">RANKERS</a><a href="/ko/play/">'+('게임 · 로그인' if l=='ko' else 'Games · Sign in')+'</a><a href="/'+l+'/lastwave/">LAST WAVE · '+('테스트 버전' if l=='ko' else 'Test version')+'</a><a href="/'+l+'/board/">'+('게시판' if l=='ko' else 'Community')+'</a>' 
     og=og or '/assets/art/hero_wide_s.jpg'
     return f'''<!doctype html><html lang="{l}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(title)}</title>
 <meta name="description" content="{e(desc,True)}"><link rel="canonical" href="{ORIGIN}{path}"><link rel="alternate" hreflang="{t['other']}" href="{ORIGIN}{alt}">
