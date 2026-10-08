@@ -14,7 +14,7 @@ def render_home(l):
    '모든 게임':'All games','로그인':'Sign in','홈':'Home',
    '부저로 겨루는 실시간 1:1':'Live 1v1 buzzer duels','실시간 대전 · 베타':'Live duel · Beta',
    '차트와 뉴스로 투자 대결':'Invest with charts and news','호텔 경영 시뮬레이션':'Hotel management simulation',
-   '웹 플레이':'Web play','무너진 서울, 생존 액션':'Survival action in fallen Seoul','테스트 버전':'Test version',
+   '웹 플레이':'Web play','아이와 함께 만드는 3D 생존 액션':'3D survival action made with a child','3D 개발 테스트':'3D development test','테스트 버전':'Test version',
    '어떻게 하나요':'How it works','AP 계정 하나로 모든 게임을 이용해요.':'One AP account for all games.',
    '아무 게임이나 플레이':'Choose your game',
    '호텔·투자는 앱의 운영 기록과 이어져요. 실시간 퀴즈는 RP에 반영되고 연습은 따로 즐길 수 있어요.':'Hotel and Invest continue your app records. Live quizzes earn RP; practice remains separate.',

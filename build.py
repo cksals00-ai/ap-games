@@ -33,11 +33,19 @@ T['en'].update(heroLead='Real-3D action powered by hero abilities. The developme
 
 def development_status(lang):
     ko=lang=='ko'
-    title='현재 개발 범위 · 2026-10-01' if ko else 'Current development scope · 2026-10-01'
+    title='지금 함께 만들고 있는 것' if ko else 'What we are building together'
     text=('다섯 영웅, 다섯 웨이브, 총 73마리의 워커와 러너. 기본 HP 200의 영웅을 선택해 근접 연속 공격, 원거리 에너지, 방향 회피와 궁극기로 싸우세요. 1인칭과 3인칭을 전환할 수 있습니다.' if ko else 'Five heroes, five waves and 73 Walkers and Runners. Choose a hero with 200 base HP and fight with melee combos, ranged energy, directional dodges and an ultimate. Switch between first- and third-person views.')
     bonds=('현재 개발판에는 VITA와 NEVER의 결합 전투가 있으며, 나머지 네 베일은 향후 계획입니다. 로컬 AI 동료 한 명과 함께 싸울 수 있습니다. 멀티플레이는 지원하지 않습니다.' if ko else 'VITA and NEVER bonding combat is part of the current preview; four more Veils are planned. Fight alongside one local AI companion. Multiplayer is not supported.')
     note=('MacBook과 iPhone용으로 개발 중입니다. 거리의 분위기와 전투 감각을 다듬고 있으며, 다른 구역·보스·강화 카드와 50·100웨이브 구상은 향후 로드맵입니다.' if ko else 'In development for MacBook and iPhone. We are refining the street atmosphere and combat feel. Other districts, bosses, upgrade cards and the 50/100-wave concepts remain on the future roadmap.')
     return f'<section class="sec" id="development"><div class="wrap"><div class="sh"><h2>{title}</h2></div><p class="lead">{text}</p><p>{bonds}</p><p class="note">{note}</p></div></section>'
+
+def family_story(lang):
+    ko=lang=='ko'
+    title='아이와 함께 만들어 가는 게임.' if ko else 'A game we are making together, parent and child.'
+    lead='아이가 그린 영웅과 상상한 이야기에서 시작했습니다. 부모와 아이가 함께 캐릭터, 기술, 거리의 분위기를 바꾸며 조금씩 게임으로 만들고 있어요.' if ko else 'It started with a child’s drawings and imagined stories. Together, parent and child are shaping the heroes, abilities and streets into a game, one step at a time.'
+    detail='지금은 개발 테스트 단계입니다. 완성된 모습을 소개하기보다, 재미있는 순간을 찾고 어색한 부분을 고쳐 나가는 과정을 공유합니다. 현재 3D 개발판의 다섯 웨이브를 기준으로 웹 실행을 준비하고 있습니다.' if ko else 'This is a development test. We share the process of finding the fun and improving what feels awkward. We are preparing browser support for the current five-wave 3D build.'
+    status='웹에서 직접 플레이할 수 있는 3D 빌드는 아직 공개되지 않았습니다. 공개 테스트가 준비되면 이 페이지에서 바로 시작할 수 있도록 연결하겠습니다.' if ko else 'The playable 3D web build is not public yet. When the public test is ready, this page will link directly to it.'
+    return f'<section class="sec" id="together"><div class="wrap"><span class="eyebrow">PARENT &amp; CHILD / WORK IN PROGRESS</span><div class="sh"><h2>{title}</h2></div><p class="lead">{lead}</p><p>{detail}</p><p class="note">{status}</p></div></section>'
 
 ROLE_EN={'PORTAL':'Portal','MAIN':'Main','MEDIC':'Medic','STARTER':'Starter','DRAGONS':'Double Dragon','BLADE':'Blade'}
 
@@ -97,6 +105,7 @@ for l in ('ko','en'):
 <div class="wrap hero-copy"><img class="game-logo" src="/assets/lastwave_logo.png" alt="LAST WAVE" width="132" height="132"><span class="eyebrow">AP GAMES PRESENTS</span><div class="genre"><b>3D</b><b>FPS</b><span>{e(t["genre"])}</span></div><h1>{e(t['heroTitle'][0])}<br>{e(t['heroTitle'][1])}</h1><p class="lead">{e(t['heroLead'])}</p>
 <div class="actions"><a class="btn" href="/{l}/heroes/">{e(t['cta'])}</a><a class="btn ghost" href="#intro">{e(t['cta2'])}</a></div><p class="plat">{e(t['platform'])}</p></div></section>
 <section class="feat"><div class="wrap"><div class="sh"><h2>{e(t['featTitle'])}</h2><p>{e(t['featLead'])}</p></div><div class="fgrid3">{feats}</div></div></section>
+{family_story(l)}
 {development_status(l)}
 {forms_teaser(l)}
 <section class="wide"><img src="/assets/art/hero_wide.jpg" alt="PIXEL — LAST WAVE key art" loading="lazy"></section>
