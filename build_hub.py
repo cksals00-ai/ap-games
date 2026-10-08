@@ -12,7 +12,7 @@ def render_home(l):
    '티어 공유 · 포인트는 게임별':'Shared tier · Separate game points',
    '웹 베타 · 퀴즈 실시간 1:1은 웹 베타입니다. 앱과 대전하려면 통합 대전 지원 버전이 필요합니다. LAST WAVE는 테스트 버전 소개이며 공개 플레이는 준비 중입니다.':'Web beta · Live 1v1 quizzes. App crossplay requires a supported app update. LAST WAVE is a test preview; public play is in preparation.',
    '모든 게임':'All games','로그인':'Sign in','홈':'Home',
-   '부저로 겨루는 실시간 1:1':'Live 1v1 buzzer duels','실시간 대전 · 베타':'Live duel · Beta',
+   'AI 부엉이와 부저 대전':'Buzzer battles with an AI owl','AI 대전 · 로그인 없이 시작':'AI battle · No login needed',
    '차트와 뉴스로 투자 대결':'Invest with charts and news','호텔 경영 시뮬레이션':'Hotel management simulation',
    '웹 플레이':'Web play','아이와 함께 만드는 3D 생존 액션':'3D survival action made with a child','3D 개발 테스트':'3D development test','테스트 버전':'Test version',
    '어떻게 하나요':'How it works','AP 계정 하나로 모든 게임을 이용해요.':'One AP account for all games.',
