@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import {handle} from '../supabase/functions/games-web-gateway/index.ts';
+import {requireWebGate,signature} from '../supabase/functions/games-web-gateway/web-gate.ts';
+const origin='https://games.apholdings.kr',uid='aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa';
+const request=(data,extra={})=>new Request('https://example.test',{method:'POST',headers:{Origin:origin,Authorization:'Bearer test.user.jwt',...extra},body:JSON.stringify(data)});
+let mutations=0;
+const deps={env:k=>({SUPABASE_URL:'https://backend.test',SUPABASE_ANON_KEY:'public-key',SUPABASE_SERVICE_ROLE_KEY:'server-secret'})[k],fetch:async(url,init)=>{
+ if(url.endsWith('/auth/v1/user'))return Response.json({id:uid});
+ assert.equal(url,'https://backend.test/rest/v1/rpc/web_duel_join');assert.equal(init.headers.Authorization,'Bearer server-secret');const body=JSON.parse(init.body);assert.equal(body.p_user,uid);mutations++;return Response.json({roomID:'room-a'});
+}};
+assert.equal((await handle(new Request('https://example.test',{method:'OPTIONS',headers:{Origin:origin}}),deps)).status,204);
+assert.equal((await handle(request({action:'join-room',body:{}},{Origin:'https://evil.test'}),deps)).status,403);
+assert.equal((await handle(request({action:'join-room',body:{}},{Authorization:''}),deps)).status,401);
+assert.equal((await handle(request({action:'delete-account',body:{}}),deps)).status,400);
+assert.equal((await handle(request({action:'join-room',body:{player_id:'player-b'}}),deps)).status,403);
+assert.equal((await handle(request({action:'join-room',body:{subject:'idol'}}),deps)).status,200);assert.equal(mutations,1);
+const expired={...deps,fetch:async()=>new Response('',{status:401})};assert.equal((await handle(request({action:'join-room',body:{}}),expired)).status,401);
+assert.equal(mutations,1);
+globalThis.Deno={env:{get:()=> 'server-secret'}};
+const admin=(data)=>({from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data})})})})});
+assert.equal(await requireWebGate(request({}),admin(null),uid,'room-a'),null);
+assert.equal((await requireWebGate(request({}),admin({room_id:'room-a'}),uid,'room-a')).status,403);
+const sig=await signature('server-secret',uid,'room-a');assert.equal(await requireWebGate(request({},{'x-web-duel-signature':sig}),admin({room_id:'room-a'}),uid,'room-a'),null);
+assert.equal((await requireWebGate(request({},{'x-web-duel-signature':sig}),admin({room_id:'room-b'}),uid,'room-b')).status,403);
+console.log('Gateway auth, caller binding, CORS, service-only queue and native bypass protection passed.');
