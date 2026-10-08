@@ -1,5 +1,6 @@
-import {AIRound} from './ai-round.mjs';
+import {AIRound,shuffleQuestion} from './ai-round.mjs?v=20261009-2';
 export function mountAI({root,questions,kind='pencil',onExit}){
+ questions=questions.map(q=>shuffleQuestion(q));
  document.body.classList.add('ai-playing');
  let index=0,scores={me:0,bot:0},disposed=false,handles=[];
  const make=(tag,text,cls)=>{let e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e;};
