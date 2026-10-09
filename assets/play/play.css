@@ -10,3 +10,86 @@
 .ai-arena{text-align:center}.quiz-prompt{font-size:clamp(20px,4vw,30px);min-height:100px;overflow-wrap:anywhere}.turn-state{min-height:48px;line-height:1.5}.round-clock{color:#ffdf50}.ai-arena .duel-players{margin:20px auto}.ai-arena .choices button{overflow-wrap:anywhere}.ai-arena .duel-buzzer{position:relative}.next-question{background:#ffdf50;color:#10203a}body{overflow-x:hidden}header nav{flex-wrap:wrap}#login[hidden]{display:none}@media(max-width:600px){main{padding:16px 12px}.intro{padding:8px 0}.intro h1{font-size:28px}.switch{gap:6px;margin:12px 0}.switch button{flex:1;padding:10px 7px}header{padding:10px 12px;gap:8px}.brand{font-size:20px}header nav{gap:10px}.panel{padding:16px 12px}.ai-arena .duel-player img{width:90px;height:100px}.ai-arena .duel-players{gap:8px}.ai-arena .duel-player{width:48%;min-width:0}.quiz-prompt{min-height:90px}.ai-arena .duel-buzzer{width:min(100%,240px);font-size:26px;min-height:64px}.board-filters{gap:10px}.board-filters label{max-width:100%}select{max-width:100%}}
 
 .ai-playing .intro{display:none}.ai-playing #status:empty{display:none}.ai-playing .duel-players{margin:8px auto 14px}.ai-playing .duel-player img{width:86px;height:100px}.ai-playing .duel-player strong{padding:4px}.ai-playing .duel-player span{padding:6px}.ai-playing .round-label{margin:4px 0 10px}.ai-playing .quiz-prompt{margin:10px 0;min-height:65px}.ai-playing .round-clock{margin:8px 0}.ai-playing main{padding-top:12px}@media(max-width:600px){.ai-playing .duel-player img{width:65px;height:75px}.ai-playing #identity{width:auto;margin-left:auto}.ai-playing header nav{width:100%;order:3}.ai-playing .choices{margin:10px 0;gap:8px}.ai-playing .choices button{padding:10px}.ai-playing .turn-state{font-size:14px;min-height:38px}.ai-playing .exit-duel{font-size:13px;min-height:44px}}
+
+/* ===== v2 디자인 (퀴즈랭커 토큰: RGRG Theme) ===== */
+:root{--bg:#061A47;--base:#0B2A6B;--raised:#123A8C;--lift:#1B4FB0;--stroke:#041233;--blue:#2C6FD6;--gold:#FFD200;--ink:#F4F8FF;--sub:#B9CBEA;--cyan:#2BD6F5;--ok:#22D07A;--bad:#D91F26;--board:#EAF4FF;--board-ink:#0A2148;--r:16px}
+body{background:radial-gradient(1200px 500px at 50% -120px,#123A8C 0%,var(--bg) 60%) fixed,var(--bg);color:var(--ink);font-family:"Pretendard","Noto Sans KR",system-ui,sans-serif;line-height:1.5}
+a{color:var(--ink)}
+header{background:rgba(6,26,71,.85);border-bottom:1px solid rgba(255,255,255,.08);padding:12px max(20px,calc((100vw - 1120px)/2))}
+.brand{font-size:20px;color:var(--ink);letter-spacing:-.01em}
+nav a{color:var(--sub);text-decoration:none;font-size:14px;padding:6px 2px}nav a:hover{color:var(--ink)}
+#identity button{min-height:38px;padding:6px 16px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.28);font-size:14px}
+main{max-width:1120px;padding:24px 20px 48px}
+/* intro */
+.intro{padding:20px 0 8px}
+.intro>p:first-child{font-size:12px;letter-spacing:.18em;color:var(--cyan);margin:0}
+h1{font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;margin:8px 0 6px}
+.intro>p:nth-of-type(2){color:var(--sub);margin:0}
+.switch{display:inline-flex;gap:4px;padding:4px;margin:20px 0 8px;background:rgba(4,18,51,.6);border:1px solid rgba(255,255,255,.08);border-radius:999px}
+.switch button{border:0;border-radius:999px;background:transparent;color:var(--sub);padding:8px 20px;min-height:40px;font-weight:600}
+.switch button:hover{background:rgba(255,255,255,.06);color:var(--ink)}
+.switch button[aria-pressed=true]{background:var(--gold);color:var(--board-ink)}
+/* buttons */
+button,.button{border-radius:12px;background:var(--raised);border:1px solid rgba(255,255,255,.12);font-weight:600;transition:background .15s,transform .1s}
+button:hover{background:var(--lift);color:var(--ink)}
+button:active{transform:translateY(1px)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+select{background:var(--stroke);border:1px solid rgba(255,255,255,.16);border-radius:12px;min-height:44px;padding:0 12px;color:var(--ink)}
+/* panels */
+#login,.panel,.card{background:linear-gradient(180deg,var(--base),#0A2560);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:28px;box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 12px 32px rgba(0,0,0,.25)}
+.panel h2{margin:0 0 6px;font-size:22px}
+.muted,.card p{color:var(--sub)}
+/* lobby panel: 분야 → 시작 버튼 순서 정렬 */
+#game>.panel:not(.ai-arena){display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+#game>.panel:not(.ai-arena)>h2,#game>.panel:not(.ai-arena)>p{flex-basis:100%;margin:0}
+#game>.panel:not(.ai-arena)>p{margin-bottom:10px;max-width:68ch}
+.panel>button{margin:0}
+#game>.panel:not(.ai-arena)>button:nth-of-type(1){background:var(--gold);color:var(--board-ink);border-color:transparent;padding:12px 24px}
+#game>.panel:not(.ai-arena)>button:nth-of-type(1):hover{background:#FFE14D}
+/* arena */
+.ai-arena{padding:24px 28px 28px}
+.round-label{display:inline-block;margin:0 0 4px;padding:4px 12px;border-radius:999px;background:rgba(4,18,51,.6);color:var(--sub);font-size:13px;font-weight:600}
+.duel-players{gap:16px}
+.duel-player{width:200px;background:var(--stroke);border:2px solid rgba(255,255,255,.1);border-radius:20px;padding:12px 12px 10px}
+.duel-player.mine{border-color:var(--gold)}
+.duel-player.buzzing{border-color:var(--cyan);box-shadow:0 0 0 4px rgba(43,214,245,.18)}
+.duel-player strong{font-size:14px;color:var(--sub);padding:6px 0 4px}
+.duel-player span{background:transparent;font-size:24px;font-weight:800;color:var(--gold);padding:0;font-variant-numeric:tabular-nums}
+.quiz-prompt{background:var(--board);color:var(--board-ink);border:4px solid var(--blue);border-radius:20px;padding:22px 24px;margin:18px auto 12px;max-width:760px;min-height:0;display:flex;align-items:center;justify-content:center;line-height:1.35}
+.round-clock{display:inline-block;margin:4px 0 12px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--gold)}
+.duel-buzzer{background:radial-gradient(circle at 50% 35%,#FF5A5F,var(--bad) 70%);color:#fff;border:0;box-shadow:0 6px 0 #8E1015,0 10px 24px rgba(217,31,38,.35);font-weight:900;letter-spacing:.02em}
+.duel-buzzer:hover{background:radial-gradient(circle at 50% 35%,#FF6B70,#E0262D 70%);color:#fff}
+.duel-buzzer:active{transform:translateY(4px);box-shadow:0 2px 0 #8E1015}
+.duel-buzzer:disabled{background:#3A4A6E;box-shadow:0 6px 0 #26324D;color:#9FB0CF;opacity:1;cursor:not-allowed}
+.turn-state{color:var(--sub);font-size:15px}
+.choices{max-width:760px;margin:16px auto}
+.choices button{background:#DCEBFB;color:var(--board-ink);border:0;border-radius:14px;min-height:56px;text-align:left;padding:12px 18px;font-size:16px}
+.choices button:hover{background:#fff;color:var(--board-ink)}
+.next-question{background:var(--gold);color:var(--board-ink);border:0}
+.exit-duel{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--sub);font-weight:500}
+/* rankings */
+#rankings{margin-top:32px;background:rgba(4,18,51,.45);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:24px 28px}
+#rankings h2{margin:0;font-size:20px}
+#rankings{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:12px}
+#rankings>h2{grid-column:1}#refresh-board{grid-column:2;grid-row:1;background:transparent;border:1px solid rgba(255,255,255,.2);font-size:14px;min-height:40px;padding:6px 14px}
+.board-filters{grid-column:1/-1;margin:16px 0 8px}
+.board-filters label{color:var(--sub);font-size:14px}
+#board{grid-column:1/-1;color:var(--sub)}
+td,th{border-bottom:1px solid rgba(255,255,255,.08)}th{color:var(--sub);font-size:13px;font-weight:600}
+footer{border-top:1px solid rgba(255,255,255,.08);color:var(--sub);font-size:13px}
+footer a{color:var(--sub)}
+@media(max-width:600px){
+ header{padding:10px 12px}.switch{display:flex}.switch button{padding:8px 6px}
+ #login,.panel{padding:18px 16px;border-radius:20px}
+ #game>.panel:not(.ai-arena)>select{flex:1 1 100%}
+ #game>.panel:not(.ai-arena)>button{flex:1 1 calc(50% - 5px)}
+ .duel-player{width:48%}.duel-player span{font-size:20px}
+ .quiz-prompt{padding:16px;border-width:3px;font-size:20px}
+ .choices button{min-height:52px}
+ #rankings{padding:18px 16px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.quiz-prompt{width:100%;box-sizing:border-box}
+.ai-arena .round-clock{display:block;width:max-content;margin:4px auto 12px}
+.ai-arena>.duel-buzzer{display:block;margin:0 auto}
+.ai-arena .quiz-prompt{margin-left:auto!important;margin-right:auto!important}
