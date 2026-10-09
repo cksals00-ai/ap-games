@@ -5,6 +5,10 @@ if(!cfg || !window.supabase){$('status').textContent='로그인 모듈을 불러
 // Uses the same default Supabase auth storage as the AP Games community.
 const sb=window.supabase.createClient(cfg.url,cfg.anon,{auth:{persistSession:true,detectSessionInUrl:true,flowType:'pkce'}});
 let user=null,card=null,game='quiz',epoch=0,busy=false,quizCleanup=()=>{};
+const activityDevice=(()=>{try{let id=localStorage.getItem('rankers.activity.device');if(!id){id=crypto.randomUUID();localStorage.setItem('rankers.activity.device',id);}return id;}catch{return crypto.randomUUID();}})();
+async function activityPing(){if(document.hidden)return;try{const {data:{session}}=await sb.auth.getSession();await fetch('https://cgijpcimixaregbpvqbf.supabase.co/functions/v1/rankers-activity',{method:'POST',headers:{'Content-Type':'application/json',...(session?{Authorization:'Bearer '+session.access_token}:{})},body:JSON.stringify({app:game==='stock'?'invest':game,platform:'web',device:activityDevice})});}catch{}}
+setInterval(activityPing,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)activityPing();});
+
 const animal={pencil:'🐰',question:'🦊',bulb:'🦥',book:'🦉',calculator:'🐜',globe:'🐘',trophy:'🦁',hourglass:'🦅'};
 const categories={idol:'아이돌',general:'상식',nonsense:'넌센스',elementary:'초등',middle:'중등',high:'고등',certification:'자격증',language:'어학',vocabulary:'어휘',koreanHistory:'한국사'};
 const names={quiz:'퀴즈랭커',hotel:'호텔랭커',invest:'투자랭커'};
@@ -20,7 +24,7 @@ function panel(title){const p=el('div',null,'panel');if(title)p.append(el('h2',t
 function drawChart(values,label){const ns='http://www.w3.org/2000/svg',s=document.createElementNS(ns,'svg');s.classList.add('chart');s.setAttribute('viewBox','0 0 400 140');s.setAttribute('role','img');s.setAttribute('aria-label',label);const v=values.filter(Number.isFinite);if(v.length<2){s.appendChild(document.createElementNS(ns,'text')).textContent='차트 기록이 쌓이면 표시됩니다.';return s;}const lo=Math.min(...v),span=Math.max(...v)-lo||1,points=v.map((n,i)=>`${10+i*380/(v.length-1)},${120-(n-lo)/span*100}`).join(' '),line=document.createElementNS(ns,'polyline');line.setAttribute('points',points);s.append(line);return s;}
 function header(){const box=$('identity');box.replaceChildren();if(!user){box.append(btn('로그인',()=>{$('login').hidden=false;}));return;}box.append(el('span',`${card?.nickname||'플레이어'} · ${card?.tier_name||card?.tier?.name||'티어 확인 중'} · ${card?.rp??'—'} RP `),btn('로그아웃',async()=>{const {error}=await sb.auth.signOut();if(error)throw error;}));}
 async function loadCard(){if(user){card=await rpc('ap_player_card');}else card=null;header();}
-async function selectGame(id){if(!names[id])return;game=id;const n=++epoch;quizCleanup();$('game').replaceChildren();status('불러오는 중…');$('login').hidden=!!user||id==='quiz';document.querySelectorAll('[data-game]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.game===id)));history.replaceState(null,'','?game='+id);try{if(id==='quiz')await quiz(n);else if(!user){$('game').append(el('p','호텔·투자랭커는 로그인 후 앱과 같은 서버 게임을 이어서 할 수 있습니다.'));}else await current(n);if(n===epoch){status('');await board(n);}}catch(e){if(n===epoch)status(e.message);}}
+async function selectGame(id){if(!names[id])return;game=id;activityPing();const n=++epoch;quizCleanup();$('game').replaceChildren();status('불러오는 중…');$('login').hidden=!!user||id==='quiz';document.querySelectorAll('[data-game]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.game===id)));history.replaceState(null,'','?game='+id);try{if(id==='quiz')await quiz(n);else if(!user){$('game').append(el('p','호텔·투자랭커는 로그인 후 앱과 같은 서버 게임을 이어서 할 수 있습니다.'));}else await current(n);if(n===epoch){status('');await board(n);}}catch(e){if(n===epoch)status(e.message);}}
 document.querySelectorAll('[data-provider]').forEach(b=>b.onclick=async()=>{if(!$('age').checked){status('온라인 게임은 만 14세 이상 이용할 수 있습니다.');return;}sessionStorage.setItem('ap-games-next',game);const {error}=await sb.auth.signInWithOAuth({provider:b.dataset.provider,options:{redirectTo:location.origin+'/ko/play/'}});if(error)status(error.message);});
 document.querySelectorAll('[data-game]').forEach(b=>b.onclick=()=>action(()=>selectGame(b.dataset.game)));
 $('refresh-board').onclick=()=>action(()=>board(epoch));
@@ -54,3 +58,4 @@ next();}}
 sb.auth.onAuthStateChange((_event,s)=>{user=s?.user||null;setTimeout(async()=>{try{await loadCard();await selectGame(game);}catch(e){status(e.message);}},0);});
 sb.auth.getSession().then(async({data,error})=>{if(error){status(error.message);return;}user=data.session?.user||null;try{await loadCard();}catch(e){status(e.message);}await selectGame(new URLSearchParams(location.search).get('game')||sessionStorage.getItem('ap-games-next')||'quiz');});
 })();
+
