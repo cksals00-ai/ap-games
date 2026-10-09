@@ -4,7 +4,7 @@ const cfg=window.BOARD_CFG, $=id=>document.getElementById(id);
 if(!cfg || !window.supabase){$('status').textContent='로그인 모듈을 불러오지 못했습니다. 새로고침해 주세요.';return;}
 // Uses the same default Supabase auth storage as the AP Games community.
 const sb=window.supabase.createClient(cfg.url,cfg.anon,{auth:{persistSession:true,detectSessionInUrl:true,flowType:'pkce'}});
-let user=null,card=null,game='quiz',epoch=0,busy=false,quizCleanup=()=>{};
+let user=null,card=null,game=new URLSearchParams(location.search).get('game')||'quiz',epoch=0,busy=false,quizCleanup=()=>{};
 const activityDevice=(()=>{try{let id=localStorage.getItem('rankers.activity.device');if(!id){id=crypto.randomUUID();localStorage.setItem('rankers.activity.device',id);}return id;}catch{return crypto.randomUUID();}})();
 async function activityPing(){if(document.hidden)return;try{const {data:{session}}=await sb.auth.getSession();await fetch('https://cgijpcimixaregbpvqbf.supabase.co/functions/v1/rankers-activity',{method:'POST',headers:{'Content-Type':'application/json',...(session?{Authorization:'Bearer '+session.access_token}:{})},body:JSON.stringify({app:game==='stock'?'invest':game,platform:'web',device:activityDevice})});}catch{}}
 setInterval(activityPing,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)activityPing();});
