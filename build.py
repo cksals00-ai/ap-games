@@ -58,12 +58,12 @@ def glyph(k):
     return f'<svg viewBox="0 0 32 32" aria-hidden="true"><path d="{d.get(k,d["dash"])}"/></svg>'
 
 for key in T:
-    T[key]['nav']=[('/'+key+'/', '홈' if key=='ko' else 'Home'),('/'+key+'/rankers/','RANKERS'),('/'+key+'/lastwave/','LAST WAVE · '+('테스트 버전' if key=='ko' else 'Test version')),('/'+key+'/board/','게시판' if key=='ko' else 'Community')]
+    T[key]['nav']=[('/'+key+'/', '홈' if key=='ko' else 'Home'),('/'+key+'/lastwave/','LAST WAVE · '+('테스트 버전' if key=='ko' else 'Test version')),('/'+key+'/board/','게시판' if key=='ko' else 'Community')]
     T[key]['footer_note']='AP Games © 2026 AP Holdings.'
 
 def shell(l,title,desc,path,body,og=None,extra_head=''):
     t=T[l]; alt=f'/{t["other"]}{path[3:]}'
-    nav='<a href="/'+l+'/">'+('홈' if l=='ko' else 'Home')+'</a><a href="/'+l+'/rankers/">RANKERS</a><a href="/ko/play/">'+('게임 · 로그인' if l=='ko' else 'Games · Sign in')+'</a><a href="/'+l+'/lastwave/">LAST WAVE · '+('테스트 버전' if l=='ko' else 'Test version')+'</a><a href="/'+l+'/board/">'+('게시판' if l=='ko' else 'Community')+'</a>'
+    nav='<a href="/'+l+'/">'+('홈' if l=='ko' else 'Home')+'</a><a href="/'+l+'/lastwave/">LAST WAVE · '+('테스트 버전' if l=='ko' else 'Test version')+'</a><a href="/'+l+'/board/">'+('게시판' if l=='ko' else 'Community')+'</a>'
     og=og or '/assets/art/hero_wide_s.jpg'
     return f'''<!doctype html><html lang="{l}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(title)}</title>
 <meta name="description" content="{e(desc,True)}"><link rel="canonical" href="{ORIGIN}{path}"><link rel="alternate" hreflang="{t['other']}" href="{ORIGIN}{alt}">
@@ -173,7 +173,7 @@ for l in ('ko','en'):
     for h in RETIRED:  # 빠진 영웅의 옛 주소는 영웅 목록으로
         out(f'/{l}/heroes/{h["id"]}/index.html',f'<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/{l}/heroes/"><link rel="canonical" href="{ORIGIN}/{l}/heroes/"></head><body></body></html>')
 out('/CNAME','games.apholdings.kr'); out('/.nojekyll','')
-urls=[f'/{l}/{s}' for l in ('ko','en') for s in ['','rankers/','lastwave/','privacy/','heroes/','forms/','threats/','arenas/','news/','board/']+[f'heroes/{h["id"]}/' for h in HEROES]]
+urls=[f'/{l}/{s}' for l in ('ko','en') for s in ['','lastwave/','privacy/','heroes/','forms/','threats/','arenas/','news/','board/']+[f'heroes/{h["id"]}/' for h in HEROES]]
 out('/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{ORIGIN}{u}</loc></url>' for u in urls)+'</urlset>')
 out('/robots.txt',f'User-agent: *\nAllow: /\nSitemap: {ORIGIN}/sitemap.xml\n')
 print('built',len(urls),'pages')

@@ -1,45 +1,27 @@
+# AP Games 홈 = LAST WAVE. 랭커 웹 게임(퀴즈·호텔·투자)은 2026-10-28 대표 지시로 사이트에서 내렸다.
+# 옛 주소(/xx/rankers/, /ko/play/)는 LAST WAVE 로 넘긴다. 랭커 앱 소개는 apholdings.kr/rankers 에 있다.
 from pathlib import Path
-from build import shell,out
+from build import out, ORIGIN
 
-def render_home(l):
- s=Path('home-v2.html').read_text()
- if l=='en':
-  translations={
-   '이번 주 추천 · 웹에서 바로 플레이':'Featured this week · Play on web',
-   '아는 순간,<br>부저를 눌러라':'Know the answer?<br>Hit the buzzer.',
-   '퀴즈랭커를 설치 없이 웹에서 즐겨보세요. 부저를 누르고 제한 시간 안에 정답을 골라요.':'Try QuizRanker in your browser. Hit the buzzer and answer before time runs out.',
-   '▶ 지금 플레이':'▶ Play now', '다른 게임 보기 →':'Explore games →',
-   '티어 공유 · 포인트는 게임별':'Shared tier · Separate game points',
-   '웹 베타 · 퀴즈 실시간 1:1은 웹 베타입니다. 앱과 대전하려면 통합 대전 지원 버전이 필요합니다. LAST WAVE는 테스트 버전 소개이며 공개 플레이는 준비 중입니다.':'Web beta · Live 1v1 quizzes. App crossplay requires a supported app update. LAST WAVE is a test preview; public play is in preparation.',
-   '모든 게임':'All games','로그인':'Sign in','홈':'Home',
-   'AI 부엉이와 부저 대전':'Buzzer battles with an AI owl','AI 대전 · 로그인 없이 시작':'AI battle · No login needed',
-   '차트와 뉴스로 투자 대결':'Invest with charts and news','호텔 경영 시뮬레이션':'Hotel management simulation',
-   '웹 플레이':'Web play','아이와 함께 만드는 3D 생존 액션':'3D survival action made with a child','3D 개발 테스트':'3D development test','테스트 버전':'Test version',
-   '어떻게 하나요':'How it works','AP 계정 하나로 모든 게임을 이용해요.':'One AP account for all games.',
-   '아무 게임이나 플레이':'Choose your game',
-   '호텔·투자는 앱의 운영 기록과 이어져요. 실시간 퀴즈는 RP에 반영되고 연습은 따로 즐길 수 있어요.':'Hotel and Invest continue your app records. Live quizzes earn RP; practice remains separate.',
-   '티어 올리기':'Build your tier','RANKERS 티어는 세 랭커 게임에서 함께 보여요.':'Your RANKERS tier appears across all three Ranker games.',
-   '게임별 개인정보처리방침':'Game privacy policies','회사 홈페이지':'Company website',
-   '퀴즈랭커':'QuizRanker','투자랭커':'InvestRanker','호텔랭커':'HotelRanker',' 로고':' logo'
-  }
-  for a,b in translations.items():s=s.replace(a,b)
-  s=s.replace('lang="ko"','lang="en"').replace('href="/ko/"','href="/en/"').replace('href="/ko/rankers/"','href="/en/rankers/"').replace('/ko/lastwave/','/en/lastwave/').replace('/ko/privacy/','/en/privacy/').replace('apholdings.kr/ko/','apholdings.kr/en/')
-  s=s.replace("https://games.apholdings.kr/en/play/","https://games.apholdings.kr/ko/play/")
- return s
+def redirect(to):
+ return f'<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url={to}"><link rel="canonical" href="{ORIGIN}{to}"><script>location.replace("{to}")</script></head><body></body></html>'
 
 for l in ['ko','en']:
- ko=l=='ko'
- cards=[]
- for game,name,desc in [('quiz','퀴즈랭커' if ko else 'QuizRanker','아는 순간, 부저. 실시간 1:1과 연습을 즐기세요.' if ko else 'Hit the buzzer. Try live 1v1 or practice.'),('hotel','호텔랭커' if ko else 'HotelRanker','경쟁 요금·시즌·마케팅으로 호텔을 운영하세요.' if ko else 'Run a hotel with pricing, seasons and marketing.'),('invest','투자랭커' if ko else 'InvestRanker','차트와 뉴스를 읽고 투자 전략을 세우세요.' if ko else 'Read charts and news, then choose your strategy.')]:
-  logo={'quiz':'quizranker-logo.png','hotel':'hotelranker-transparent.png','invest':'investranker-transparent.png'}[game]
-  cards.append(f'<article class="hcard"><img class="hub-logo" src="/assets/play/{logo}" alt="{name}"><span class="eyebrow">RANKERS</span><h2>{name}</h2><p>{desc}</p><a class="btn" href="/ko/play/?game={game}">'+('웹 게임 시작' if ko else 'Play on web')+'</a></article>')
- body='<section class="page hub"><div class="wrap"><span class="eyebrow">AP GAMES / RANKERS · WEB BETA</span><h1>'+('한 계정, 세 가지 도전.' if ko else 'One account. Three challenges.')+'</h1><p class="lead">'+('공통 로그인으로 앱과 연결된 티어와 캐릭터를 만나세요. 포인트는 게임별로 관리합니다.' if ko else 'One sign-in for your characters and tier. Points remain separate per game.')+'</p><a class="btn" href="/ko/play/">'+('AP Games 로그인 · 플레이' if ko else 'AP Games sign in & play')+'</a><div class="hgrid">'+''.join(cards)+'</div><p>'+('실시간 1:1은 웹 베타로 제공됩니다. 앱과 대전하려면 통합 대전 지원 업데이트가 필요합니다.' if ko else 'Live 1v1 is available as a web beta. App crossplay requires the supported app update.')+'</p></div></section>'
- out(f'/{l}/rankers/index.html',shell(l,'RANKERS | AP Games','Quiz · Hotel · Invest',f'/{l}/rankers/',body,extra_head='<link rel="stylesheet" href="/assets/play/hub.css?v=20261008-4">'))
- last='<section class="page hub"><div class="wrap"><span>LAST WAVE · '+('테스트 버전' if ko else 'TEST VERSION')+'</span><h2>LAST WAVE</h2><p>'+('무너진 서울을 배경으로 한 액션 게임. 현재 개발 테스트 단계이며 공개 웹 플레이는 준비 중입니다.' if ko else 'An action game set in fallen Seoul. A development test version; public web play is in preparation.')+'</p><a class="btn" href="/'+l+'/lastwave/">'+('테스트 버전 소개' if ko else 'About the test version')+'</a></div></section>'
- out(f'/{l}/index.html',render_home(l))
+ # 홈: LAST WAVE 페이지와 같은 내용, 주소만 /xx/
+ s=Path(f'{l}/lastwave/index.html').read_text()
+ s=s.replace(f'<link rel="canonical" href="{ORIGIN}/{l}/lastwave/">',f'<link rel="canonical" href="{ORIGIN}/{l}/">')
+ other='en' if l=='ko' else 'ko'
+ s=s.replace(f'hreflang="{other}" href="{ORIGIN}/{other}/lastwave/"',f'hreflang="{other}" href="{ORIGIN}/{other}/"')
+ s=s.replace(f'<meta property="og:url" content="{ORIGIN}/{l}/lastwave/">',f'<meta property="og:url" content="{ORIGIN}/{l}/">')
+ s=s.replace(f'<a class="lang" href="/{other}/lastwave/">',f'<a class="lang" href="/{other}/">')
+ out(f'/{l}/index.html',s)
+ out(f'/{l}/rankers/index.html',redirect(f'/{l}/lastwave/'))
+
+out('/ko/play/index.html',redirect('/ko/lastwave/'))
 
 for l in ['ko','en']:
  title='게임별 개인정보처리방침' if l=='ko' else 'Privacy policies by game'
  links=[('QuizRanker','https://www.apholdings.kr/rgrg/privacy.html'),('HotelRanker','https://www.apholdings.kr/hotelranker/privacy.html'),('InvestRanker','https://www.apholdings.kr/investranker/privacy.html'),('LAST WAVE','https://www.apholdings.kr/lastwave/')]
  body='<section class="page hub"><div class="wrap"><h1>'+title+'</h1><ul>'+''.join('<li><a href="'+url+'">'+name+'</a></li>' for name,url in links)+'</ul></div></section>'
+ from build import shell
  out('/'+l+'/privacy/index.html',shell(l,title,title,'/'+l+'/privacy/',body,extra_head='<link rel="stylesheet" href="/assets/play/hub.css?v=20261008-4">'))
