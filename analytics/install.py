@@ -2,7 +2,7 @@
 from pathlib import Path
 import re
 ROOT=Path(__file__).resolve().parent.parent
-TAG='<script defer data-ap-analytics src="https://www.apholdings.kr/analytics/ap-analytics.js?v=20261029"></script>'
+TAG='<script defer data-ap-analytics src="https://www.apholdings.kr/analytics/ap-analytics.js?v=20261029-counter1"></script>'
 BLOCK={'admin','auth','checkout','cart','submit','qna','support','docs','tests','_backup_20260919','_to_delete','site-source','newsletters','.git'}
 main=(ROOT/'CNAME').read_text().strip()=='www.apholdings.kr'
 count=0
